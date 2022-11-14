@@ -1,34 +1,35 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Product } from "../../types/product";
+import { User } from "../../types/user";
 
 //initial state of products - empty array of Products
-const initialState: Product[] = [];
+const initialState: User[] = [];
 
 //asynchronous function created
-export const fetchAllProducts = createAsyncThunk(
+export const fetchAllUsers = createAsyncThunk(
   //name of an action
-  "fetchAllProducts",
+  "fetchAllUsers",
   //the real function
   async () => {
     //variable to hold fetched data
     //axios transforms promise to json data itself, no need to do that with .then()
-    const result = await axios.get("https://api.escuelajs.co/api/v1/products");
+    const result = await axios.get("https://api.escuelajs.co/api/v1/users");
     const data = result.data;
     return data;
   }
 );
 
-const productSlice = createSlice({
-  name: "productReducer",
+const userSlice = createSlice({
+  name: "userReducer",
   //just the name of the state here
   initialState,
-  //list of all redecers
+  //list of all reducers
   reducers: {},
   //function for fetching
   extraReducers: (build) => {
     //returned by fetch data lives inside "action"
-    build.addCase(fetchAllProducts.fulfilled, (state, action) => {
+    build.addCase(fetchAllUsers.fulfilled, (state, action) => {
       return action.payload;
     });
   },
@@ -51,5 +52,5 @@ function async(): import("@reduxjs/toolkit").AsyncThunkPayloadCreator<
   throw new Error("Function not implemented.");
 }
 
-const productReducer = productSlice.reducer;
-export default productReducer;
+const userReducer = userSlice.reducer;
+export default userReducer;
