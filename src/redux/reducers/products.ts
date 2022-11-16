@@ -14,14 +14,13 @@ export const fetchAllProducts = createAsyncThunk(
 );
 
 export const fetchSingleProduct = createAsyncThunk(
-  "countries/fetchCountry",
-  //thunkAPI can be used here for error handlihg as a parameter
-  async (name: string) => {
-    const response = await fetch(
-      `https://restcountries.com/v3.1/name/${name}?fullText=true`
+  "fetchSingleProduct",
+  async (id: number) => {
+    const result = await axios.get(
+      `https://api.escuelajs.co/api/v1/products/${id}`
     );
-    const data: CountryT[] = await response.json();
-    return data;
+    const singleCountryData = result.data;
+    return singleCountryData;
   }
 );
 

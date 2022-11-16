@@ -6,9 +6,9 @@ import React from "react";
 import { Provider } from "react-redux";
 
 import { store } from "../redux/store";
-import Products from "./Products";
+import Products from "../components/ProductsList";
 import Users from "./Users";
-import NavBar from "./NavBar";
+import NavBar from "../components/NavBar";
 import AddProduct from "./AddProduct";
 import AddCategory from "./AddCategoryForm";
 import ProgressLog from "./ProgressLog";
@@ -21,13 +21,12 @@ const Home = () => {
         <Box>
           <Grid container spacing={2}>
             <Grid item xs={2}>
-              <NavBar />
+              {/**<NavBar /> */}
             </Grid>
             <Grid item xs={7}>
               <AddProduct />
               <AddCategory />
               <h1>Main content</h1>
-              <Products />
             </Grid>
             <Grid item xs={3}>
               <ProgressLog />
