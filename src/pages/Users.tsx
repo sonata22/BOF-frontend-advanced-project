@@ -32,7 +32,28 @@ const Users = () => {
       <h1>Users List</h1>
       <ul>
         {users.map((item) => (
-          <List
+          <List key={item.id}>
+            <img src={item.avatar} alt="Image" width="200px" />
+            <ListItem>Name: {item.name}</ListItem>
+            <ListItem>Email: {item.email}</ListItem>
+            <ListItem>Role: {item.role}</ListItem>
+          </List>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Users;
+
+/**<List key={item.id}>
+            <img src={item.avatar} alt="Image" width="200px" />
+            <ListItem>Name: {item.name}</ListItem>
+            <ListItem>Email: {item.email}</ListItem>
+            <ListItem>Role: {item.role}</ListItem>
+          </List> */
+
+/**<List
             key={item.id}
             sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
           >
@@ -59,18 +80,4 @@ const Users = () => {
               />
             </ListItem>
             <Divider variant="inset" component="li" />
-          </List>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-export default Users;
-
-/**<List key={item.id}>
-            <img src={item.avatar} alt="Image" width="200px" />
-            <ListItem>Name: {item.name}</ListItem>
-            <ListItem>Email: {item.email}</ListItem>
-            <ListItem>Role: {item.role}</ListItem>
           </List> */
