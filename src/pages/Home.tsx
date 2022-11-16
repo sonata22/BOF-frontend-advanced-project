@@ -9,6 +9,9 @@ import { store } from "../redux/store";
 import Products from "./Products";
 import Users from "./Users";
 import NavBar from "./NavBar";
+import AddProduct from "./AddProduct";
+import AddCategory from "./AddCategoryForm";
+import ProgressLog from "./ProgressLog";
 
 const Home = () => {
   return (
@@ -21,10 +24,13 @@ const Home = () => {
               <NavBar />
             </Grid>
             <Grid item xs={7}>
+              <AddProduct />
+              <AddCategory />
               <h1>Main content</h1>
               <Products />
             </Grid>
             <Grid item xs={3}>
+              <ProgressLog />
               <Users />
             </Grid>
           </Grid>

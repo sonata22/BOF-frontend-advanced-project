@@ -11,8 +11,11 @@ const NavBar = () => {
         <button type="button">Profile</button>
         <button type="button">Add Product</button>
         <button type="button">Add Category</button>
+        <button type="button">Cart</button>
+        <button type="button">Featured</button>
         <button type="button">Switch Theme</button>
         <button type="button">Music Player</button>
+        <button type="button">Search Product</button>
         <button type="button">Sign Out</button>
       </Box>
     </div>
