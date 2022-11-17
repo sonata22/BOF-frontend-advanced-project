@@ -6,6 +6,7 @@ import AddProduct from "./AddProduct";
 import NavBar from "../components/NavBar";
 import ProgressLog from "./ProgressLog";
 import Users from "./Users";
+import RandomNum from "../components/RandomNum";
 
 const Products = () => {
   return (

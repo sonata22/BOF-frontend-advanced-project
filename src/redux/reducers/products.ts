@@ -19,11 +19,10 @@ export const fetchSingleProduct = createAsyncThunk(
     const result = await axios.get(
       `https://api.escuelajs.co/api/v1/products/${id}`
     );
-    const singleCountryData = result.data;
-    return singleCountryData;
+    const singleProductData = result.data;
+    return singleProductData;
   }
 );
-
 
 export const updateProduct = createAsyncThunk(
   "updateProduct",
@@ -56,6 +55,9 @@ const productSlice = createSlice({
       .addCase(fetchAllProducts.fulfilled, (state, action) => {
         return action.payload;
       })
+      .addCase(fetchSingleProduct.fulfilled, (state, action) => {
+        return action.payload;
+      })
       .addCase(updateProduct.fulfilled, (state, action) => {
         return state.map((item) => {
           if (item.id === action.payload.id) {
@@ -66,8 +68,7 @@ const productSlice = createSlice({
       })
       .addCase(addProduct.fulfilled, (state, action) => {
         state.push(action.payload);
-      })
-      
+      });
   },
 });
 

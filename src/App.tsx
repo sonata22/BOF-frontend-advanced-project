@@ -12,6 +12,7 @@ import Users from "./pages/Users";
 import { store } from "./redux/store";
 import Products from "./pages/Products";
 import NavBar from "./components/NavBar";
+import SingleUserPage from "./pages/SingleUserPage";
 
 function App() {
   return (
@@ -22,8 +23,14 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/products" element={<Products />}></Route>
-            <Route path="/products/:id" element={<SingleProductPage />}></Route>
+            <Route path="/products">
+              <Route path="" element={<Products />} />
+              <Route path=":productId" element={<SingleProductPage />} />
+            </Route>
+            <Route path="/users">
+              <Route path="" element={<Users />} />
+              <Route path=":userId" element={<SingleUserPage />} />
+            </Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/featured" element={<Featured />}></Route>
             <Route path="/search" element={<Search />}></Route>
