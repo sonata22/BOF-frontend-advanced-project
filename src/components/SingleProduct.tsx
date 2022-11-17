@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { fetchSingleProduct } from "../redux/reducers/products";
+import { Product } from "../types/Product";
 
 const SingleProduct = () => {
   // Accessing value of a URL
@@ -20,15 +21,13 @@ const SingleProduct = () => {
 
   console.log("Single Product fetched: ", product);
 
-if (product.length === 0) {
-  return <h1>Loading</h1>;
-}
+  if (product.length === 0) {
+    return <h1>Loading</h1>;
+  }
   return (
     <div>
       <h1>Signle Product Page</h1>
-      <div>
-        Hello there
-      </div>
+      <div>Hello there</div>
     </div>
   );
 };

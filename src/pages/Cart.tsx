@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../redux/hooks";
 
 const Cart = () => {
-  return (
-    <div>Cart</div>
-  )
-}
+  const navigate = useNavigate(); //error says it needs to be wrapped in useEffect
+  const user = useAppSelector((state) => state.userReducer.currentUser); // get value of currentUser
+  if (!user) {
+    navigate("/login");
+  }
 
-export default Cart
+  return <div>Cart</div>;
+};
+
+export default Cart;

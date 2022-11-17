@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { Category } from "../types/category";
+import { Category } from "../types/Category";
 
 const AddProduct = () => {
   return (

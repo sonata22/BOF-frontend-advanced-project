@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Item from "@mui/material";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 
 import { store } from "../redux/store";
@@ -12,8 +12,13 @@ import NavBar from "../components/NavBar";
 import AddProduct from "./AddProduct";
 import AddCategory from "./AddCategoryForm";
 import ProgressLog from "./ProgressLog";
+import { useAppDispatch } from "../redux/hooks";
+import { authenticate } from "../redux/reducers/users";
 
 const Home = () => {
+  //this is reauthentication upon opening
+
+
   return (
     <div>
       This is Home page

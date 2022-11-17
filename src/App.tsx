@@ -13,6 +13,10 @@ import { store } from "./redux/store";
 import Products from "./pages/Products";
 import NavBar from "./components/NavBar";
 import SingleUserPage from "./pages/SingleUserPage";
+import Login from "./pages/Login";
+import { useAppDispatch } from "./redux/hooks";
+import { useEffect } from "react";
+import { authenticate } from "./redux/reducers/users";
 
 function App() {
   return (
@@ -23,6 +27,8 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+
             <Route path="/products">
               <Route path="" element={<Products />} />
               <Route path=":productId" element={<SingleProductPage />} />

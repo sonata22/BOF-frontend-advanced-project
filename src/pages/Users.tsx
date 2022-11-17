@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { fetchAllUsers } from "../redux/reducers/users";
 
 const Users = () => {
-  const users = useAppSelector((state) => state.userReducer);
+  const users = useAppSelector((state) => state.userReducer.users);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchAllUsers());

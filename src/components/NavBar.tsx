@@ -8,8 +8,13 @@ import CategoryIcon from "@mui/icons-material/Category";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import SavedSearchIcon from "@mui/icons-material/SavedSearch";
+import LoginIcon from "@mui/icons-material/Login";
+import { useAppSelector } from "../redux/hooks";
 
 const NavBar = () => {
+const user = useAppSelector(state=>state.userReducer.currentUser) // get value of currentUser
+
+
   return (
     <div>
       <Box display="flex" flexDirection="column" position="fixed">
@@ -28,7 +33,12 @@ const NavBar = () => {
               </ListItemIcon>
               <Link to="">Home</Link>
             </MenuItem>
-
+            <MenuItem>
+              <ListItemIcon>
+                <LoginIcon fontSize="small" color="primary" />
+              </ListItemIcon>
+              <Link to="login">Log In</Link>
+            </MenuItem>
             <MenuItem>
               <ListItemIcon>
                 <CategoryIcon fontSize="small" color="primary" />
@@ -57,16 +67,11 @@ const NavBar = () => {
         </nav>
         To Be Implemented:
         <button type="button">Sign Up</button>
-        <button type="button">Sign In</button>
-        <button type="button">Profile</button>
-        <button type="button">Add Product</button>
-        <button type="button">Add Category</button>
-        <button type="button">Cart</button>
+        <button type="button" disabled={user?false:true} >Cart</button>
         <button type="button">Featured</button>
         <button type="button">Switch Theme</button>
         <button type="button">Music Player</button>
         <button type="button">Search Product</button>
-        <button type="button">Sign Out</button>
       </Box>
     </div>
   );

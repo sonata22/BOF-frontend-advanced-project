@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Product } from "../../types/product";
+import { Product } from "../../types/Product";
+
 
 const initialState: Product[] = [];
 
@@ -71,23 +72,6 @@ const productSlice = createSlice({
       });
   },
 });
-
-function async(): import("@reduxjs/toolkit").AsyncThunkPayloadCreator<
-  unknown,
-  void,
-  {
-    state?: unknown;
-    dispatch?: import("redux").Dispatch<import("redux").AnyAction> | undefined;
-    extra?: unknown;
-    rejectValue?: unknown;
-    serializedErrorType?: unknown;
-    pendingMeta?: unknown;
-    fulfilledMeta?: unknown;
-    rejectedMeta?: unknown;
-  }
-> {
-  throw new Error("Function not implemented.");
-}
 
 const productReducer = productSlice.reducer;
 export default productReducer;

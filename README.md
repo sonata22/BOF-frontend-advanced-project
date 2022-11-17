@@ -15,7 +15,7 @@
     - update and delete a product (enable update & delete features only for admin of the webapp)
    User Reducer:
     - get all users
-    - find a single user
+    - find a single user (feature not supported by API no longer)
     - create new user (delete user is not allowed in this api)
     - authenticate user
    Cart Reducer:
