@@ -1,9 +1,9 @@
-import { ListItem } from "@mui/material";
+import { Box, Button, ListItem, TextField } from "@mui/material";
 import axios from "axios";
-import { stringify } from "querystring";
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { authenticate, logOut } from "../redux/reducers/users";
+import LoginIcon from "@mui/icons-material/Login";
 
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
@@ -28,31 +28,51 @@ const LoginForm = () => {
   };
 
   const onLogout = () => {
-    dispatch(logOut())
+    dispatch(logOut());
   };
 
   return (
     <div>
-      <h1>LoginForm</h1>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          value={email}
-          name="email"
+      <Box
+        component="form"
+        onSubmit={onSubmit}
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        gap={1}
+      >
+        <h1>Log In</h1>
+        <TextField
+          required
           id="email"
+          label="Email"
+          type="email"
+          variant="outlined"
+          size="small"
           onChange={(e) => setEmail(e.target.value)} // set email value from user input
+          value={email}
         />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          value={password}
-          name="password"
+        <TextField
+          required
           id="password"
+          label="Password"
+          type="password"
+          variant="outlined"
+          size="small"
           onChange={(e) => setPassword(e.target.value)} // set password value from user input
+          value={password}
         />
-        <button type="submit">Submit</button>
-      </form>
+        <Button
+          type="submit"
+          variant="contained"
+          endIcon={<LoginIcon />}
+          size="medium"
+        >
+          Submit
+        </Button>
+      </Box>
+
       {user && (
         <div>
           <h2>Profile</h2>
@@ -74,3 +94,14 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+function handleChange(
+  arg0: string
+):
+  | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  | undefined {
+  throw new Error("Function not implemented.");
+}
+
+function setValues(arg0: any) {
+  throw new Error("Function not implemented.");
+}
