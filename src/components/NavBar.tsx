@@ -10,14 +10,21 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import SavedSearchIcon from "@mui/icons-material/SavedSearch";
 import LoginIcon from "@mui/icons-material/Login";
 import { useAppSelector } from "../redux/hooks";
+import PersonIcon from "@mui/icons-material/Person";
 
 const NavBar = () => {
-const user = useAppSelector(state=>state.userReducer.currentUser) // get value of currentUser
-
+  const user = useAppSelector((state) => state.userReducer.currentUser); // get value of currentUser
 
   return (
     <div>
-      <Box display="flex" flexDirection="column" position="fixed">
+      <Box
+        display="flex"
+        flexDirection="column"
+        position="fixed"
+        justifyContent="center"
+        alignItems="center"
+        margin={1}
+      >
         <h1>Menu</h1>
         {/** Return / Forward */}
         <Box display="flex" flexDirection="row" justifyContent="center">
@@ -33,12 +40,21 @@ const user = useAppSelector(state=>state.userReducer.currentUser) // get value o
               </ListItemIcon>
               <Link to="">Home</Link>
             </MenuItem>
-            <MenuItem>
-              <ListItemIcon>
-                <LoginIcon fontSize="small" color="primary" />
-              </ListItemIcon>
-              <Link to="login">Log In</Link>
-            </MenuItem>
+            {!user ? (
+              <MenuItem>
+                <ListItemIcon>
+                  <LoginIcon fontSize="small" color="primary" />
+                </ListItemIcon>
+                <Link to="login">Log In</Link>
+              </MenuItem>
+            ) : (
+              <MenuItem>
+                <ListItemIcon>
+                  <PersonIcon fontSize="small" color="primary" />
+                </ListItemIcon>
+                <Link to="login">Profile</Link>
+              </MenuItem>
+            )}
             <MenuItem>
               <ListItemIcon>
                 <CategoryIcon fontSize="small" color="primary" />
@@ -67,7 +83,9 @@ const user = useAppSelector(state=>state.userReducer.currentUser) // get value o
         </nav>
         To Be Implemented:
         <button type="button">Sign Up</button>
-        <button type="button" disabled={user?false:true} >Cart</button>
+        <button type="button" disabled={user ? false : true}>
+          Cart
+        </button>
         <button type="button">Featured</button>
         <button type="button">Switch Theme</button>
         <button type="button">Music Player</button>

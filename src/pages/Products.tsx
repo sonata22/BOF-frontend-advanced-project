@@ -24,8 +24,7 @@ const Products = () => {
             <ProductsList />
           </Grid>
           <Grid item xs={3}>
-            <ProgressLog />
-            <Users />
+            <h1>Something here</h1>
           </Grid>
         </Grid>
       </Box>

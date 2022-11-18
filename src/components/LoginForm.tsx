@@ -1,4 +1,4 @@
-import { Box, Button, ListItem, TextField } from "@mui/material";
+import { Avatar, Box, Button, ListItem, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
@@ -10,7 +10,6 @@ const LoginForm = () => {
   const [password, setPassword] = useState<string>("");
 
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,10 +26,6 @@ const LoginForm = () => {
     }
   };
 
-  const onLogout = () => {
-    dispatch(logOut());
-  };
-
   return (
     <div>
       <Box
@@ -40,7 +35,8 @@ const LoginForm = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        gap={1}
+        gap={1.5}
+        height={550}
       >
         <h1>Log In</h1>
         <TextField
@@ -72,23 +68,6 @@ const LoginForm = () => {
           Submit
         </Button>
       </Box>
-
-      {user && (
-        <div>
-          <h2>Profile</h2>
-          <img src={user.avatar} alt={user.name} width="200" />
-          <p>Nickname: {user.name}</p>
-          <p>Email: {user.email}</p>
-          <ListItem>
-            <p>Password: </p>
-            {user.role === "admin" ? <p>{user.password}</p> : <p>*******</p>}
-          </ListItem>
-          <p>Role: {user.role}</p>
-          <button type="button" onClick={onLogout}>
-            Sign Out
-          </button>
-        </div>
-      )}
     </div>
   );
 };

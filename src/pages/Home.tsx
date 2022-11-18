@@ -35,7 +35,6 @@ const Home = () => {
             </Grid>
             <Grid item xs={3}>
               <ProgressLog />
-              <Users />
             </Grid>
           </Grid>
         </Box>
