@@ -1,4 +1,4 @@
-import { List, ListItem } from "@mui/material";
+import { List, ImageListItem, ImageList, Box, Grid } from "@mui/material";
 import React, { useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import { Link, useParams } from "react-router-dom";
@@ -6,7 +6,9 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { fetchSingleProduct } from "../redux/reducers/products";
 import { Product } from "../types/Product";
 import AddToFavourite from "./AddToFavourite";
-import ProductCarousel from "./ProductCarousel";
+import { stringify } from "querystring";
+import ReactDOM from "react-dom";
+import ProgressLog from "../pages/ProgressLog";
 
 const SingleProduct = () => {
   // Accessing value of a URL
@@ -27,7 +29,18 @@ const SingleProduct = () => {
   }
   return (
     <div>
-      <ProductCarousel/>
+      <Box>
+        <Grid container spacing={0}>
+          <Grid item xs={8}>
+            <img src={product.images[0]} alt="" width="500" />
+          </Grid>
+          <Grid item xs={4}>
+            <img src={product.images[1]} alt="" width="200" />
+            <img src={product.images[2]} alt="" width="200" />
+          </Grid>
+        </Grid>
+      </Box>
+
       <h3>Product ID</h3>
       <p>{product.id}</p>
       <h3>Title</h3>
