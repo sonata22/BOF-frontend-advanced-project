@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Box,
   Divider,
   LinearProgress,
   List,
@@ -29,15 +30,34 @@ const Users = () => {
   }
   return (
     <div>
-      <h1>Users List</h1>
+      <Box display="flex" justifyContent="center">
+        <h1>List of All Users</h1>
+      </Box>
       <ul>
         {users.map((item) => (
-          <List key={item.id}>
-            <img src={item.avatar} alt="Image" width="200px" />
-            <ListItem>Name: {item.name}</ListItem>
-            <ListItem>Email: {item.email}</ListItem>
-            <ListItem>Role: {item.role}</ListItem>
-          </List>
+          <Box display="flex" flexDirection="row" flexWrap="wrap">
+            <List key={item.id}>
+              <ListItem alignItems="center">
+                <ListItemAvatar>
+                  <Avatar
+                    alt={item.name}
+                    src={item.avatar}
+                    sx={{ width: 100, height: 100, m: "0em 0.7em" }}
+                  />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={item.name}
+                  secondary={
+                    <React.Fragment>
+                      <Typography>{item.email}</Typography>
+                      {item.role}
+                    </React.Fragment>
+                  }
+                />
+              </ListItem>
+              <Divider variant="inset" component="li" />
+            </List>
+          </Box>
         ))}
       </ul>
     </div>

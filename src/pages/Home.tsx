@@ -29,12 +29,11 @@ const Home = () => {
               {/**<NavBar /> */}
             </Grid>
             <Grid item xs={7}>
-              <AddProduct />
-              <AddCategory />
               <h1>Main content</h1>
             </Grid>
             <Grid item xs={3}>
               <ProgressLog />
+              <h1>Random Product</h1>
             </Grid>
           </Grid>
         </Box>
