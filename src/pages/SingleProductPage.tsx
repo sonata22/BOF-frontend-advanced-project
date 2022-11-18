@@ -1,3 +1,4 @@
+import { Box, Grid } from "@mui/material";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SingleProduct from "../components/SingleProduct";
@@ -7,8 +8,19 @@ import { fetchSingleProduct } from "../redux/reducers/products";
 const SingleProductPage = () => {
   return (
     <div>
-      <p>SingleProductPage</p>
-      <SingleProduct />
+      <Box>
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+            {/**<NavBar /> */}
+          </Grid>
+          <Grid item xs={7}>
+            <SingleProduct />
+          </Grid>
+          <Grid item xs={3}>
+            <h1>Favourite?</h1>
+          </Grid>
+        </Grid>
+      </Box>
     </div>
   );
 };

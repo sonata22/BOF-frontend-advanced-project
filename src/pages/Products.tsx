@@ -5,7 +5,7 @@ import AddCategory from "./AddCategoryForm";
 import AddProduct from "./AddProduct";
 import NavBar from "../components/NavBar";
 import ProgressLog from "./ProgressLog";
-import Users from "./Users";
+import Users from "../components/Users";
 import RandomNum from "../components/RandomNum";
 
 const Products = () => {

@@ -8,6 +8,11 @@ export interface Product {
   categoryId?: number;
 }
 
+export interface ProductReducer {
+  products: Product[];
+  singleProduct: Product | undefined;
+}
+
 export interface ProductCategory {
   id: number;
   name: Name;

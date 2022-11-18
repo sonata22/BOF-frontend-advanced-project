@@ -9,7 +9,7 @@ import {
 } from "../redux/reducers/products";
 
 const ProductsList = () => {
-  const products = useAppSelector((state) => state.productReducer);
+  const products = useAppSelector((state) => state.productReducer.products);
   const dispatch = useAppDispatch();
   const onEdit = () => {
     dispatch(

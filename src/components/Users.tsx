@@ -35,29 +35,28 @@ const Users = () => {
       </Box>
       <ul>
         {users.map((item) => (
-          <Box display="flex" flexDirection="row" flexWrap="wrap">
-            <List key={item.id}>
-              <ListItem alignItems="center">
-                <ListItemAvatar>
-                  <Avatar
-                    alt={item.name}
-                    src={item.avatar}
-                    sx={{ width: 100, height: 100, m: "0em 0.7em" }}
-                  />
-                </ListItemAvatar>
-                <ListItemText
-                  primary={item.name}
-                  secondary={
-                    <React.Fragment>
-                      <Typography>{item.email}</Typography>
-                      {item.role}
-                    </React.Fragment>
-                  }
+          <List key={item.id}>
+            <ListItem alignItems="center">
+              <ListItemAvatar>
+                <Avatar
+                  alt={item.name}
+                  src={item.avatar}
+                  sx={{ width: 100, height: 100, m: "0em 0.7em" }}
                 />
-              </ListItem>
-              <Divider variant="inset" component="li" />
-            </List>
-          </Box>
+              </ListItemAvatar>
+              <ListItemText
+                primary={item.name}
+                secondary={
+                  <React.Fragment>
+                    {item.email}
+                    <br/>
+                    {item.role}
+                  </React.Fragment>
+                }
+              />
+            </ListItem>
+            <Divider variant="inset" component="li" />
+          </List>
         ))}
       </ul>
     </div>

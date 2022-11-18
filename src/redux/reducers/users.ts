@@ -14,11 +14,6 @@ export const fetchAllUsers = createAsyncThunk("fetchAllUsers", async () => {
   return result.data;
 });
 
-/**export const checkEmail = createAsyncThunk(
-  "checkEmail",
-  async()=>{}
-) */
-
 export const authenticate = createAsyncThunk(
   "authenticate",
   async (token: string) => {

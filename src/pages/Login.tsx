@@ -8,7 +8,7 @@ import { authenticate } from "../redux/reducers/users";
 import { store } from "../redux/store";
 import AddCategory from "./AddCategoryForm";
 import AddProduct from "./AddProduct";
-import Users from "./Users";
+import Users from "../components/Users";
 
 const Login = () => {
   const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value

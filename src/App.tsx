@@ -8,7 +8,7 @@ import Featured from "./pages/Featured";
 import Home from "./pages/Home";
 import ProductsList from "./components/ProductsList";
 import SingleProductPage from "./pages/SingleProductPage";
-import Users from "./pages/Users";
+import Users from "./components/Users";
 import { store } from "./redux/store";
 import Products from "./pages/Products";
 import NavBar from "./components/NavBar";

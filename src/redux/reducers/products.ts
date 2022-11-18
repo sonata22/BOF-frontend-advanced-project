@@ -1,27 +1,32 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Product } from "../../types/Product";
+import { Product, ProductReducer } from "../../types/Product";
 
-
-const initialState: Product[] = [];
+export const initialState: ProductReducer = {
+  products: [],
+  singleProduct: undefined,
+};
 
 export const fetchAllProducts = createAsyncThunk(
   "fetchAllProducts",
   async () => {
     const result = await axios.get("https://api.escuelajs.co/api/v1/products");
-    const data = result.data;
-    return data;
+    return result.data;
   }
 );
 
 export const fetchSingleProduct = createAsyncThunk(
   "fetchSingleProduct",
   async (id: number) => {
-    const result = await axios.get(
-      `https://api.escuelajs.co/api/v1/products/${id}`
-    );
-    const singleProductData = result.data;
-    return singleProductData;
+    try {
+      const result = await axios.get(
+        `https://api.escuelajs.co/api/v1/products/${id}`
+      );
+      const singleProductData = result.data;
+      return singleProductData;
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 
@@ -53,13 +58,19 @@ const productSlice = createSlice({
   reducers: {},
   extraReducers: (build) => {
     build
-      .addCase(fetchAllProducts.fulfilled, (state, action) => {
-        return action.payload;
-      })
-      .addCase(fetchSingleProduct.fulfilled, (state, action) => {
-        return action.payload;
-      })
-      .addCase(updateProduct.fulfilled, (state, action) => {
+      .addCase(
+        fetchAllProducts.fulfilled,
+        (state, action: PayloadAction<Product[]>) => {
+          state.products = action.payload;
+        }
+      )
+      .addCase(
+        fetchSingleProduct.fulfilled,
+        (state, action: PayloadAction<Product>) => {
+          state.singleProduct = action.payload
+        }
+      )
+      {/**.addCase(updateProduct.fulfilled, (state, action) => {
         return state.map((item) => {
           if (item.id === action.payload.id) {
             item = action.payload;
@@ -69,7 +80,8 @@ const productSlice = createSlice({
       })
       .addCase(addProduct.fulfilled, (state, action) => {
         state.push(action.payload);
-      });
+      }); */
+      }
   },
 });
 
