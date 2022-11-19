@@ -4,20 +4,20 @@
 
 1. Endpoint: [https://fakeapi.platzi.com/](https://fakeapi.platzi.com/)
 2. Pages AT LEAST: Home, Product, Profile, Cart
-    Profile - only available if user logins
-    Cart - can be a page or a modal
+    + Profile - only available if user logins
+    - Cart - can be a page or a modal
 3. Button - to switch themes of the web app
 4. Store Reducer:
-    - get all products
+    + get all products
     - find a single products
     - sort products by categories
     - sort products by price
     - update and delete a product (enable update & delete features only for admin of the webapp)
    User Reducer:
-    - get all users
-    - find a single user (feature not supported by API no longer)
+    + get all users
+    - find a single user (feature no longer supported by API)
     - create new user (delete user is not allowed in this api)
-    - authenticate user
+    + authenticate user
    Cart Reducer:
     - add product to cart
     - remove products

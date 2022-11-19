@@ -5,7 +5,7 @@ import AddCategory from "./AddCategoryForm";
 import AddProduct from "./AddProduct";
 import NavBar from "../components/NavBar";
 import ProgressLog from "./ProgressLog";
-import Users from "../components/Users";
+import Users from "../components/UsersList";
 import RandomNum from "../components/RandomNum";
 
 const Products = () => {
@@ -17,13 +17,13 @@ const Products = () => {
           <Grid item xs={2}>
             {/**<NavBar /> */}
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={8}>
             <AddProduct />
             <AddCategory />
             <h1>Main content</h1>
             <ProductsList />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={2}>
             <h1>Something here</h1>
           </Grid>
         </Grid>

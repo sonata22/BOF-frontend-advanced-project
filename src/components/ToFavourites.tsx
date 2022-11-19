@@ -3,7 +3,7 @@ import { ToggleButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-const AddToFavourite = () => {
+const ToFavourites = () => {
   const [selected, setSelected] = React.useState(false);
 
   return (
@@ -19,4 +19,4 @@ const AddToFavourite = () => {
   );
 };
 
-export default AddToFavourite;
+export default ToFavourites;

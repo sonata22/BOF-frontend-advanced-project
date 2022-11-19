@@ -3,9 +3,9 @@ import React, { useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { fetchSingleProduct } from "../redux/reducers/products";
+import { fetchSingleProduct, updateProduct } from "../redux/reducers/products";
 import { Product } from "../types/Product";
-import AddToFavourite from "./AddToFavourite";
+import AddToFavourite from "./ToFavourites";
 import { stringify } from "querystring";
 import ReactDOM from "react-dom";
 import ProgressLog from "../pages/ProgressLog";
@@ -17,6 +17,25 @@ const SingleProduct = () => {
 
   const product = useAppSelector((state) => state.productReducer.singleProduct);
   const dispatch = useAppDispatch();
+
+  const onEdit = () => {
+    dispatch(
+      updateProduct({
+        id: 3,
+        data: {
+          id: 3,
+          title: "THIS is changed product",
+          price: 300,
+          description: "This changed product is highly not recommended to buy",
+          images: [
+            "https://api.lorem.space/image/watch?w=640&h=480&r=6151",
+            "https://api.lorem.space/image/watch?w=640&h=480&r=2296",
+            "https://api.lorem.space/image/watch?w=640&h=480&r=1097",
+          ],
+        },
+      })
+    );
+  };
 
   useEffect(() => {
     if (productId) {
@@ -35,8 +54,9 @@ const SingleProduct = () => {
             <img src={product.images[0]} alt="" width="500" />
           </Grid>
           <Grid item xs={4}>
-            <img src={product.images[1]} alt="" width="200" />
-            <img src={product.images[2]} alt="" width="200" />
+            <img src={product.images[1]} alt="" width="163" />
+            <img src={product.images[2]} alt="" width="163" />
+            <img src={product.images[1]} alt="" width="163" />
           </Grid>
         </Grid>
       </Box>
@@ -54,6 +74,14 @@ const SingleProduct = () => {
       <h3>Category Image</h3>
       <img src={product.category?.image} alt={product.title} width={300} />
       <h3>Images</h3>
+      <Box display="flex" flexDirection="row" justifyContent="center">
+        <button type="button">Like</button>
+        <button type="button">Add to Cart</button>
+        <button type="button" onClick={onEdit}>
+          Edit
+        </button>
+        <button type="button">Delete</button>
+      </Box>
 
       <button type="button">Add to Cart</button>
       <AddToFavourite />
