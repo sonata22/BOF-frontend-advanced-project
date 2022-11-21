@@ -9,7 +9,7 @@ import { store } from "../redux/store";
 import Products from "../components/ProductsList";
 import Users from "../components/UsersList";
 import NavBar from "../components/NavBar";
-import AddProduct from "./AddProduct";
+import AddProduct from "../components/AddProduct";
 import AddCategory from "./AddCategoryForm";
 import ProgressLog from "./ProgressLog";
 import { useAppDispatch } from "../redux/hooks";

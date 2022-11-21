@@ -45,7 +45,8 @@ export const addProduct = createAsyncThunk(
   "addProduct",
   async (product: Product) => {
     const result = await axios.post(
-      "https://api.escuelajs.co/api/v1/products/"
+      "https://api.escuelajs.co/api/v1/products/",
+      product
     );
     const newProduct = result.data;
     return newProduct;

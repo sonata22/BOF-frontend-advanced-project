@@ -3,7 +3,11 @@ import React, { useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { fetchSingleProduct, updateProduct } from "../redux/reducers/products";
+import {
+  addProduct,
+  fetchSingleProduct,
+  updateProduct,
+} from "../redux/reducers/products";
 import { Product } from "../types/Product";
 import AddToFavourite from "./ToFavourites";
 import { stringify } from "querystring";
@@ -20,19 +24,12 @@ const SingleProduct = () => {
 
   const onEdit = () => {
     dispatch(
-      updateProduct({
-        id: 3,
-        data: {
-          id: 3,
-          title: "THIS is changed product",
-          price: 300,
-          description: "This changed product is highly not recommended to buy",
-          images: [
-            "https://api.lorem.space/image/watch?w=640&h=480&r=6151",
-            "https://api.lorem.space/image/watch?w=640&h=480&r=2296",
-            "https://api.lorem.space/image/watch?w=640&h=480&r=1097",
-          ],
-        },
+      addProduct({
+        title: "HEREITISSS",
+        price: 7777,
+        description: "string",
+        categoryId: 1,
+        images: ["string"],
       })
     );
   };

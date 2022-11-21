@@ -2,7 +2,7 @@ import { Box, Grid } from "@mui/material";
 import React from "react";
 import ProductsList from "../components/ProductsList";
 import AddCategory from "./AddCategoryForm";
-import AddProduct from "./AddProduct";
+import AddProduct from "../components/AddProduct";
 import NavBar from "../components/NavBar";
 import ProgressLog from "./ProgressLog";
 import Users from "../components/UsersList";

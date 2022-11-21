@@ -9,20 +9,42 @@
 3. Button - to switch themes of the web app
 4. Store Reducer:
     + get all products
-    - find a single products
+    + get a single product
     - sort products by categories
     - sort products by price
     - update and delete a product (enable update & delete features only for admin of the webapp)
    User Reducer:
     + get all users
-    - find a single user (feature no longer supported by API)
+    - get a single user (feature no longer supported by API)
     - create new user (delete user is not allowed in this api)
     + authenticate user
    Cart Reducer:
     - add product to cart
-    - remove products
+    - remove products from cart
     - update products's quantity in cart
 5. When adding routers to your application, programatically set certain routes to be private. For example, route to user profile page should not be accessible if user has not logged in.
+
+Want to implement additionally:
+    - SingleRandomProduct
+    - Statistics for:
+        - users
+        - products
+        - categories
+    - Favourites Page
+    - Button tooltips (e.g. when it is disabled to inform user about smth)
+    - Sign Up
+    - Show/Hide password icon logic
+    - Show/Hide button for password in profile or just remove it
+    - Music Player
+    - Products on sale??
+    - Image slides or carousels
+    - Commenting a product functionality
+    - Rating?
+    - Style single product in AllProducts list
+    - Order button in Cart with hint "Gotcha!" and maybe purchase functionality... that's a long way ahead
+    - Validation
+
+
 
 ## Instruction to start the project
 

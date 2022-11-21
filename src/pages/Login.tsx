@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { authenticate } from "../redux/reducers/users";
 import { store } from "../redux/store";
 import AddCategory from "./AddCategoryForm";
-import AddProduct from "./AddProduct";
+import AddProduct from "../components/AddProduct";
 import Users from "../components/UsersList";
 
 const Login = () => {
@@ -35,9 +35,16 @@ const Login = () => {
                 <div>
                   <AddProduct />
                   <AddCategory />
-                  <Users />
                 </div>
               )}
+              {/**MODIFY IT PROPERLY  */}
+              <div>
+                {user?.role === "admin" && (
+                  <div>
+                    <Users />
+                  </div>
+                )}
+              </div>
             </Grid>
             <Grid item xs={2.5}>
               <Profile />
