@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { fetchSingleCategory } from '../redux/reducers/categories';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { fetchSingleCategory } from '../../redux/reducers/categories';
 
 const SingleCategory = () => {
 

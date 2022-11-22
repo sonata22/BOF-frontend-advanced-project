@@ -2,17 +2,17 @@ import { List, ImageListItem, ImageList, Box, Grid } from "@mui/material";
 import React, { useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import { Link, useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   addProduct,
   fetchSingleProduct,
   updateProduct,
-} from "../redux/reducers/products";
-import { Product } from "../types/Product";
-import AddToFavourite from "./ToFavourites";
+} from "../../redux/reducers/products";
+import { Product } from "../../types/Product";
+import AddToFavourite from "../ToFavourites";
 import { stringify } from "querystring";
 import ReactDOM from "react-dom";
-import ProgressLog from "../pages/ProgressLog";
+import ProgressLog from "../ProgressLog";
 
 const SingleProduct = () => {
   // Accessing value of a URL

@@ -1,12 +1,12 @@
 import { Box } from "@mui/material";
 import React, { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { addProduct } from "../redux/reducers/products";
-import { Category } from "../types/Category";
-import { AddProductFormData } from "../types/forms/AddProductFormData";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { addProduct } from "../../redux/reducers/products";
+import { Category } from "../../types/Category";
+import { AddProductFormData } from "../../types/forms/AddProductForm";
 
-const AddProduct = () => {
+const AddProductForm = () => {
   const dispatch = useAppDispatch();
 
   const onClick = () => {
@@ -33,7 +33,7 @@ const AddProduct = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(renderAddProductForm)}>
-        <Box display="flex" flexDirection="column">
+        <Box display="flex" flexDirection="column" width="15em">
           <h1>Add Product</h1>
           <label htmlFor="title">Title</label>
           <input
@@ -75,4 +75,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default AddProductForm;

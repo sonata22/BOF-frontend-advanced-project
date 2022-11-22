@@ -1,6 +1,6 @@
 import { Box, Grid } from '@mui/material';
 import React from 'react'
-import SingleCategory from '../components/SingleCategory';
+import SingleCategory from '../components/single/SingleCategory';
 
 const SingleCategoryPage = () => {
   return (

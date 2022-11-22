@@ -1,8 +1,8 @@
 import { Avatar, Box, Button, ListItem, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { authenticate, logOut } from "../redux/reducers/users";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { authenticate, logOut } from "../../redux/reducers/users";
 import LoginIcon from "@mui/icons-material/Login";
 
 const LoginForm = () => {
@@ -73,14 +73,4 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-function handleChange(
-  arg0: string
-):
-  | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
-  | undefined {
-  throw new Error("Function not implemented.");
-}
 
-function setValues(arg0: any) {
-  throw new Error("Function not implemented.");
-}

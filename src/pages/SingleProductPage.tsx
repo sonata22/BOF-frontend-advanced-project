@@ -1,7 +1,7 @@
 import { Box, Grid } from "@mui/material";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import SingleProduct from "../components/SingleProduct";
+import SingleProduct from "../components/single/SingleProduct";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { fetchSingleProduct } from "../redux/reducers/products";
 

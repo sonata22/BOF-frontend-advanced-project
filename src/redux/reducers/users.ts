@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Product } from "../../types/Product";
-import { User, UserLoginCreds, UserReducer } from "../../types/User";
+import { User, UserReducer } from "../../types/User";
 
 export const initialState: UserReducer = {
   users: [],
@@ -12,6 +11,15 @@ export const initialState: UserReducer = {
 export const fetchAllUsers = createAsyncThunk("fetchAllUsers", async () => {
   const result = await axios.get("https://api.escuelajs.co/api/v1/users");
   return result.data;
+});
+
+export const addUser = createAsyncThunk("addUser", async (userData: User) => {
+  const result = await axios.post(
+    "https://api.escuelajs.co/api/v1/users/",
+    userData
+  );
+  const newUser = result.data;
+  return newUser;
 });
 
 export const authenticate = createAsyncThunk(
@@ -51,6 +59,9 @@ const userSlice = createSlice({
         }
       )
       .addCase(authenticate.fulfilled, (state, action: PayloadAction<User>) => {
+        state.currentUser = action.payload;
+      })
+      .addCase(addUser.fulfilled, (state, action: PayloadAction<User>) => {
         state.currentUser = action.payload;
       });
   },

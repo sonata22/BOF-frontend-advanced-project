@@ -11,8 +11,8 @@ import {
 } from "@mui/material";
 import React, { useEffect } from "react";
 import { isTemplateExpression } from "typescript";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { fetchAllUsers } from "../redux/reducers/users";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { fetchAllUsers } from "../../redux/reducers/users";
 
 const Users = () => {
   const users = useAppSelector((state) => state.userReducer.users);

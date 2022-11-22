@@ -1,15 +1,16 @@
 import { Box, Grid } from "@mui/material";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/forms/LoginForm";
 import Profile from "../components/Profile";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { authenticate } from "../redux/reducers/users";
 import { store } from "../redux/store";
-import AddCategory from "../components/AddCategoryForm";
-import AddProduct from "../components/AddProduct";
-import Users from "../components/UsersList";
-import CategoriesList from "../components/CategoriesList";
+import AddCategory from "../components/forms/AddCategoryForm";
+import AddProduct from "../components/forms/AddProductForm";
+import Users from "../components/lists/UsersList";
+import CategoriesList from "../components/lists/CategoriesList";
+import CreateUserViaAdminForm from "../components/forms/CreateUserViaAdminForm";
 
 const Login = () => {
   const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
@@ -34,8 +35,11 @@ const Login = () => {
               {!user && <LoginForm />}
               {user && (
                 <div>
-                  <AddProduct />
-                  <AddCategory />
+                  <Box display="flex" gap={1}>
+                    <AddProduct />
+                    <AddCategory />
+                    <CreateUserViaAdminForm />
+                  </Box>
                   <CategoriesList />
                 </div>
               )}

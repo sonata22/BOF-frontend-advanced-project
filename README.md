@@ -16,7 +16,7 @@
    User Reducer:
     + get all users
     - get a single user (feature no longer supported by API)
-    - create new user (delete user is not allowed in this api)
+    + create new user (delete user is not allowed in this api)
     + authenticate user
    Cart Reducer:
     - add product to cart
@@ -43,6 +43,7 @@ Want to implement additionally:
     - Style single product in AllProducts list
     - Order button in Cart with hint "Gotcha!" and maybe purchase functionality... that's a long way ahead
     - Validation
+    - Only admin can create admin accounts
 
 
 

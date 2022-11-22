@@ -6,9 +6,9 @@ import "./App.css";
 import Cart from "./pages/Cart";
 import Featured from "./pages/Featured";
 import Home from "./pages/Home";
-import ProductsList from "./components/ProductsList";
+import ProductsList from "./components/lists/ProductsList";
 import SingleProductPage from "./pages/SingleProductPage";
-import Users from "./components/UsersList";
+import Users from "./components/lists/UsersList";
 import { store } from "./redux/store";
 import Products from "./pages/Products";
 import NavBar from "./components/NavBar";
@@ -18,8 +18,8 @@ import { useAppDispatch } from "./redux/hooks";
 import { useEffect } from "react";
 import { authenticate } from "./redux/reducers/users";
 import Categories from "./redux/reducers/categories";
-import CategoriesList from "./components/CategoriesList";
-import SingleCategory from "./components/SingleCategory";
+import CategoriesList from "./components/lists/CategoriesList";
+import SingleCategory from "./components/single/SingleCategory";
 import SingleCategoryPage from "./pages/SingleCategoryPage";
 
 function App() {
