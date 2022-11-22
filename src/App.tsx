@@ -17,6 +17,10 @@ import Login from "./pages/Login";
 import { useAppDispatch } from "./redux/hooks";
 import { useEffect } from "react";
 import { authenticate } from "./redux/reducers/users";
+import Categories from "./redux/reducers/categories";
+import CategoriesList from "./components/CategoriesList";
+import SingleCategory from "./components/SingleCategory";
+import SingleCategoryPage from "./pages/SingleCategoryPage";
 
 function App() {
   return (
@@ -36,6 +40,10 @@ function App() {
             <Route path="/users">
               <Route path="" element={<Users />} />
               <Route path=":userId" element={<SingleUserPage />} />
+            </Route>
+            <Route path="/categories">
+              <Route path="" element={<CategoriesList />} />
+              <Route path=":categoryId" element={<SingleCategoryPage />} />
             </Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/featured" element={<Featured />}></Route>

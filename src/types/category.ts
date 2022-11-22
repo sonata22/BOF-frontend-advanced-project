@@ -1,5 +1,10 @@
 export interface Category {
-  id: number;
+  id?: number;
   name: string;
   image: string;
+}
+
+export interface CategoryReducer {
+  categories: Category[];
+  singleCategory: Category | undefined;
 }

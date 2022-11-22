@@ -6,9 +6,10 @@ import Profile from "../components/Profile";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { authenticate } from "../redux/reducers/users";
 import { store } from "../redux/store";
-import AddCategory from "./AddCategoryForm";
+import AddCategory from "../components/AddCategoryForm";
 import AddProduct from "../components/AddProduct";
 import Users from "../components/UsersList";
+import CategoriesList from "../components/CategoriesList";
 
 const Login = () => {
   const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
@@ -35,6 +36,7 @@ const Login = () => {
                 <div>
                   <AddProduct />
                   <AddCategory />
+                  <CategoriesList />
                 </div>
               )}
               {/**MODIFY IT PROPERLY  */}

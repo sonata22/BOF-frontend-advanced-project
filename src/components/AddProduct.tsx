@@ -12,7 +12,7 @@ const AddProduct = () => {
   const onClick = () => {
     dispatch(
       addProduct({
-        title: "Hello",
+        title: "IT's Me!",
         price: 7777,
         description: "string",
         categoryId: 1,
@@ -20,10 +20,13 @@ const AddProduct = () => {
       })
     );
   };
+    let result = {}
 
   const { register, handleSubmit, reset } = useForm<AddProductFormData>(); //returns 1 object with many methods
   const renderAddProductForm: SubmitHandler<AddProductFormData> = (data) => {
     console.log(data);
+    result = data
+    console.log(result)
     reset();
   };
 

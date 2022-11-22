@@ -10,11 +10,12 @@ import Products from "../components/ProductsList";
 import Users from "../components/UsersList";
 import NavBar from "../components/NavBar";
 import AddProduct from "../components/AddProduct";
-import AddCategory from "./AddCategoryForm";
+import AddCategory from "../components/AddCategoryForm";
 import ProgressLog from "./ProgressLog";
 import { useAppDispatch } from "../redux/hooks";
 import { authenticate } from "../redux/reducers/users";
 import SignUpForm from "../components/SignUpForm";
+import CategoriesList from "../components/CategoriesList";
 
 const Home = () => {
   //this is reauthentication upon opening
@@ -31,7 +32,7 @@ const Home = () => {
             </Grid>
             <Grid item xs={7}>
               <h1>Main content</h1>
-              <SignUpForm/>
+              <SignUpForm />
             </Grid>
             <Grid item xs={3}>
               <ProgressLog />
