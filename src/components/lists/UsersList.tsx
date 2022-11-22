@@ -49,7 +49,7 @@ const Users = () => {
                 secondary={
                   <React.Fragment>
                     {item.email}
-                    <br/>
+                    <br />
                     {item.role}
                   </React.Fragment>
                 }

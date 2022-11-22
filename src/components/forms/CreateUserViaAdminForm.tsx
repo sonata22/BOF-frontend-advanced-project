@@ -1,10 +1,11 @@
-import { Box } from "@mui/material";
+import { Box, Button, MenuItem, TextField } from "@mui/material";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { addUser } from "../../redux/reducers/users";
 import { SignUpFormData } from "../../types/forms/SignUpForm";
+import AddIcon from "@mui/icons-material/Add";
 
 const CreateUserViaAdminForm = () => {
   const dispatch = useAppDispatch();
@@ -21,50 +22,88 @@ const CreateUserViaAdminForm = () => {
         display="flex"
         flexDirection="column"
         justifyContent="center"
-        width="15em"
+        alignItems="center"
+        gap={1}
+        sx={{
+          "& .MuiTextField-root": { width: "25ch" },
+        }}
       >
-        <h1>Register User</h1>
-        <label htmlFor="name">Name: </label>
-        <input
+        <h2>Register User</h2>
+        <TextField
+          required
+          id="username"
+          label="User Name"
           type="text"
-          id="name"
-          placeholder="Nata"
-          {...register("name", { required: true })}
+          variant="outlined"
+          size="small"
+          placeholder="Natali"
+          {...register("name")}
         />
-        <label htmlFor="email">Email: </label>
-        <input
-          type="email"
+        <TextField
+          required
           id="email"
-          placeholder="nata@mail.com"
-          {...register("email", { required: true })}
+          label="Email"
+          type="email"
+          variant="outlined"
+          size="small"
+          placeholder="natali@mail.com"
+          {...register("email")}
         />
-        <label htmlFor="password">Password: </label>
-        <input
-          type="password"
+        <TextField
+          required
           id="password"
-          placeholder="NoMorePeanutsToday123!"
-          {...register("password", { required: true })}
-        />
-        <label htmlFor="re_password">Retype Password: </label>
-        <input
-          name="re_password"
+          label="Password"
           type="password"
-          id="re_password"
+          variant="outlined"
+          size="small"
           placeholder="NoMorePeanutsToday123!"
+          {...register("password")}
         />
-        <label htmlFor="role">Role</label>
-        <select id="role" {...register("role", { required: true })}>
-          <option value="customer">Customer</option>
-          <option value="admin">Admin</option>
-        </select>
-        <label htmlFor="avatar">Avatar URL: </label>
-        <input
-          type="url"
+        <TextField
+          required
+          id="re_password"
+          label="Confirm Password"
+          type="password"
+          variant="outlined"
+          size="small"
+          placeholder="NoMorePeanutsToday123!"
+          {...register("re_password")}
+        />
+        <TextField
+          select
+          id="role"
+          label="Role"
+          defaultValue="customer"
+          variant="outlined"
+          size="small"
+          {...register("role")}
+        >
+          <MenuItem key="customer" value="customer">
+            Customer
+          </MenuItem>
+          <MenuItem key="admin" value="admin">
+            Admin
+          </MenuItem>
+        </TextField>
+        <TextField
+          required
           id="avatar"
-          placeholder="https://www.img.com/img.png"
-          {...register("avatar", { required: true })}
+          label="Avatar Image URL"
+          type="url"
+          variant="outlined"
+          size="small"
+          placeholder="https://"
+          {...register("avatar")}
+          fullWidth={true}
         />
-        <button type="submit">Register</button>
+        <Button
+          type="submit"
+          variant="contained"
+          endIcon={<AddIcon />}
+          size="medium"
+        >
+          Register
+        </Button>
       </Box>
     </form>
   );

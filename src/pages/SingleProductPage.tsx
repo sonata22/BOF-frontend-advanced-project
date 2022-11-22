@@ -17,7 +17,7 @@ const SingleProductPage = () => {
             <SingleProduct />
           </Grid>
           <Grid item xs={3}>
-            <h1>Favourite?</h1>
+            <h1>Category Info</h1>
           </Grid>
         </Grid>
       </Box>

@@ -34,7 +34,7 @@ const AddProductForm = () => {
     <div>
       <form onSubmit={handleSubmit(renderAddProductForm)}>
         <Box display="flex" flexDirection="column" width="15em">
-          <h1>Add Product</h1>
+          <h2>Add Product</h2>
           <label htmlFor="title">Title</label>
           <input
             type="text"

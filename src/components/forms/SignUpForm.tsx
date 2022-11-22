@@ -1,18 +1,37 @@
 import { Box } from "@mui/material";
-import React from "react";
+import axios from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { addUser } from "../../redux/reducers/users";
+
+import { useAppDispatch } from "../../redux/hooks";
+import { addUser, authenticate } from "../../redux/reducers/users";
 import { SignUpFormData } from "../../types/forms/SignUpForm";
 
 const SignUpForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
+
   const { register, handleSubmit, reset } = useForm<SignUpFormData>();
-  const onSubmit: SubmitHandler<SignUpFormData> = (data) => {
+
+  const onSubmit: SubmitHandler<SignUpFormData> = async (data) => {
     dispatch(addUser(data));
+    const email = data.email;
+    const password = data.password;
+    console.log(email);
+    console.log(password);
+
+    try {
+      const response = await axios.post(
+        "https://api.escuelajs.co/api/v1/auth/login",
+        { email, password }
+      );
+      const token = response.data; // received: { "access_token": "ey...HM" }
+      localStorage.setItem("token", token.access_token);
+      dispatch(authenticate(token.access_token));
+    } catch (error) {
+      console.log(error); // temporary
+    }
+
     reset();
     navigate("/login");
   };

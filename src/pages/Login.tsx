@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Divider, Grid } from "@mui/material";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
 import LoginForm from "../components/forms/LoginForm";
@@ -35,12 +35,18 @@ const Login = () => {
               {!user && <LoginForm />}
               {user && (
                 <div>
-                  <Box display="flex" gap={1}>
-                    <AddProduct />
-                    <AddCategory />
-                    <CreateUserViaAdminForm />
-                  </Box>
-                  <CategoriesList />
+                  {user?.role === "admin" && (
+                    <div>
+                      <h1>Admin Panel</h1>
+                      <Divider variant="fullWidth" />
+
+                      <Box display="flex" justifyContent="space-evenly" gap={1}>
+                        <AddProduct />
+                        <AddCategory />
+                        <CreateUserViaAdminForm />
+                      </Box>
+                    </div>
+                  )}
                 </div>
               )}
               {/**MODIFY IT PROPERLY  */}

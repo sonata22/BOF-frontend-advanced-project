@@ -1,4 +1,4 @@
-import { Box, LinearProgress, List, ListItem } from "@mui/material";
+import { Avatar, Box, LinearProgress, List, ListItem } from "@mui/material";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -14,19 +14,30 @@ const CategoriesList = () => {
   }, [dispatch]);
   return (
     <div>
-      <h1>List of All Categories</h1>
+      <h1>All Categories</h1>
       {categories.length > 0 ? (
         <Box display="flex" flexDirection="row" flexWrap="wrap">
           {categories.map((item) => (
             <List key={item.id}>
-              <Box width={210}>
+              <Box width={200}>
                 <ListItem>
-                  <img src={item.image} alt="Image" width="200px" />
+                  <Avatar
+                    alt={item.name}
+                    src={item.image}
+                    sx={{ width: 180, height: 180 }}
+                  />
                 </ListItem>
-                <ListItem>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  alignItems="center"
+                  lineHeight={1.2}
+                  margin={1}
+                >
                   <Link to={`/categories/${item.id}`}>{item.name}</Link>
-                </ListItem>
-                <ListItem>ID: {item.id}</ListItem>
+                  ID: {item.id}{" "}
+                </Box>
               </Box>
             </List>
           ))}

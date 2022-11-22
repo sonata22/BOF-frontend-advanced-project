@@ -82,7 +82,6 @@ const NavBar = () => {
           </MenuList>
         </nav>
         To Be Implemented:
-        <button type="button">Sign Up</button>
         <button type="button" disabled={user ? false : true}>
           Cart
         </button>

@@ -1,9 +1,10 @@
-import { Box } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useAppDispatch } from "../../redux/hooks";
 import { addCategory } from "../../redux/reducers/categories";
 import { AddCategoryFormData } from "../../types/forms/AddCategoryForm";
+import AddIcon from "@mui/icons-material/Add";
 
 const AddCategory = () => {
   const dispatch = useAppDispatch();
@@ -15,24 +16,45 @@ const AddCategory = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(renderAddCategoryForm)}>
-        <Box display="flex" flexDirection="column" width="15em">
-          <h1>Add Category</h1>
-          <label htmlFor="name">Category Name</label>
-          <input
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          gap={1}
+          sx={{
+            "& .MuiTextField-root": { width: "25ch" },
+          }}
+        >
+          <h2>Add Category</h2>
+          <TextField
+            required
+            id="categoryName"
+            label="Category Name"
             type="text"
-            {...register("name", { required: true })}
+            variant="outlined"
+            size="small"
             placeholder="Hats"
-            id="name"
+            {...register("name", { required: true })}
           />
-          <label htmlFor="image">Category Image URL</label>
-          <input
+          <TextField
+            required
+            id="CategoryImage"
+            label="Category Image"
             type="url"
+            variant="outlined"
+            size="small"
+            placeholder="https://"
             {...register("image", { required: true })}
-            id="image"
-            placeholder="https://www.img.com/img.png"
-            pattern="https://.*"
           />
-          <button type="submit">Create</button>
+          <Button
+            type="submit"
+            variant="contained"
+            endIcon={<AddIcon />}
+            size="medium"
+          >
+            Create
+          </Button>
         </Box>
       </form>
     </div>

@@ -43,7 +43,9 @@ Want to implement additionally:
     - Style single product in AllProducts list
     - Order button in Cart with hint "Gotcha!" and maybe purchase functionality... that's a long way ahead
     - Validation
-    - Only admin can create admin accounts
+    + Only admin can create admin accounts
+    - Edit category from single page
+    - Green circle on Profile page when user is logged in
 
 
 
