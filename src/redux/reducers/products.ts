@@ -53,6 +53,20 @@ export const addProduct = createAsyncThunk(
   }
 );
 
+export const deleteProduct = createAsyncThunk(
+  "deleteProduct",
+  async (id: number) => {
+    try {
+      const result = await axios.delete(
+        `https://api.escuelajs.co/api/v1/products/${id}`
+      );
+      return result.data;
+    } catch (error) {
+      alert(error);
+    }
+  }
+);
+
 const productSlice = createSlice({
   name: "productReducer",
   initialState,
@@ -86,6 +100,9 @@ const productSlice = createSlice({
       .addCase(addProduct.fulfilled, (state, action) => {
         //state.push(action.payload);
         state.singleProduct = action.payload;
+      })
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        state.singleProduct = undefined;
       });
   },
 });

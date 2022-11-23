@@ -1,18 +1,13 @@
-import { List, ImageListItem, ImageList, Box, Grid } from "@mui/material";
-import React, { useEffect } from "react";
-import Carousel from "react-material-ui-carousel";
-import { Link, useParams } from "react-router-dom";
+import { Box, IconButton } from "@mui/material";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import {
-  addProduct,
-  fetchSingleProduct,
-  updateProduct,
-} from "../../redux/reducers/products";
-import { Product } from "../../types/Product";
+import { addProduct, fetchSingleProduct } from "../../redux/reducers/products";
 import AddToFavourite from "../ToFavourites";
-import { stringify } from "querystring";
-import ReactDOM from "react-dom";
-import ProgressLog from "../ProgressLog";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteProduct from "../buttons/DeleteProduct";
 
 const SingleProduct = () => {
   // Accessing value of a URL
@@ -45,43 +40,43 @@ const SingleProduct = () => {
   }
   return (
     <div>
-      <Box>
-        <Grid container spacing={0}>
-          <Grid item xs={8}>
-            <img src={product.images[0]} alt="" width="500" />
-          </Grid>
-          <Grid item xs={4}>
-            <img src={product.images[1]} alt="" width="163" />
-            <img src={product.images[2]} alt="" width="163" />
-            <img src={product.images[1]} alt="" width="163" />
-          </Grid>
-        </Grid>
+      <h2>
+        <InsertDriveFileIcon color="primary" />
+        {product.title} <i>${product.price}</i>
+      </h2>
+      <Box
+        display="flex"
+        flexDirection="row"
+        flexWrap="wrap"
+        justifyContent="center"
+        gap={1}
+      >
+        <img src={product.images[0]} alt="" width="500" />
+        <Box display="flex" flexDirection="column">
+          <img src={product.images[1]} alt="" width="167" />
+          <img src={product.images[2]} alt="" width="167" />
+          <img src={product.images[1]} alt="" width="167" />
+        </Box>
       </Box>
-
-      <h3>Product ID</h3>
-      <p>{product.id}</p>
-      <h3>Title</h3>
-      <p>{product.title}</p>
-      <h3>Price</h3>
-      <p>${product.price}</p>
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        gap={1}
+        margin={1}
+      >
+        <AddToFavourite />
+        <IconButton color="primary">
+          <AddShoppingCartIcon />
+        </IconButton>
+        <IconButton onClick={onEdit} color="primary">
+          <EditIcon />
+        </IconButton>
+        <DeleteProduct />
+      </Box>
       <h3>Description</h3>
       <p>{product.description}</p>
-      <h3>Category</h3>
-      <p>{product.category?.name}</p>
-      <h3>Category Image</h3>
-      <img src={product.category?.image} alt={product.title} width={300} />
-      <h3>Images</h3>
-      <Box display="flex" flexDirection="row" justifyContent="center">
-        <button type="button">Like</button>
-        <button type="button">Add to Cart</button>
-        <button type="button" onClick={onEdit}>
-          Edit
-        </button>
-        <button type="button">Delete</button>
-      </Box>
-
-      <button type="button">Add to Cart</button>
-      <AddToFavourite />
+      <i>Product ID: {product.id}</i>
     </div>
   );
 };
