@@ -5,6 +5,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { addCategory } from "../../redux/reducers/categories";
 import { AddCategoryFormData } from "../../types/forms/AddCategoryForm";
 import AddIcon from "@mui/icons-material/Add";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 const AddCategory = () => {
   const dispatch = useAppDispatch();
@@ -50,8 +51,9 @@ const AddCategory = () => {
           <Button
             type="submit"
             variant="contained"
-            endIcon={<AddIcon />}
+            startIcon={<ShoppingBasketIcon />}
             size="medium"
+            color="secondary"
           >
             Create
           </Button>

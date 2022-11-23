@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { addUser } from "../../redux/reducers/users";
 import { SignUpFormData } from "../../types/forms/SignUpForm";
 import AddIcon from "@mui/icons-material/Add";
+import PersonIcon from "@mui/icons-material/Person";
 
 const CreateUserViaAdminForm = () => {
   const dispatch = useAppDispatch();
@@ -99,8 +100,9 @@ const CreateUserViaAdminForm = () => {
         <Button
           type="submit"
           variant="contained"
-          endIcon={<AddIcon />}
+          startIcon={<PersonIcon />}
           size="medium"
+          color="secondary"
         >
           Register
         </Button>

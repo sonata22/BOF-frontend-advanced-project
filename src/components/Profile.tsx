@@ -38,8 +38,8 @@ const Profile = () => {
             <p>{user.name}</p>
             <h3>Email</h3>
             <p>{user.email}</p>
-            <h3>Password</h3>
-            {user.role === "admin" ? <p>{user.password}</p> : <p>*******</p>}
+            {/**<h3>Password</h3>
+            {user.role === "admin" ? <p>{user.password}</p> : <p>*******</p>} */}
             <h3>Role</h3>
             <p>{user.role}</p>
           </Box>

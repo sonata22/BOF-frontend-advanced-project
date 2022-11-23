@@ -1,89 +1,125 @@
-import { Box } from "@mui/material";
-import React, { useEffect } from "react";
+import { Box, Button, TextField } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import AddIcon from "@mui/icons-material/Add";
+
+import { useAppDispatch } from "../../redux/hooks";
 import { addProduct } from "../../redux/reducers/products";
-import { Category } from "../../types/Category";
 import { AddProductFormData } from "../../types/forms/AddProductForm";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const AddProductForm = () => {
   const dispatch = useAppDispatch();
-
-  const onClick = () => {
-    {
-      /**
-    dispatch(
-      addProduct({
-        title: "IT's Me!",
-        price: 7777,
-        description: "string",
-        categoryId: 1,
-        images: ["string"],
-      })
-    ); 
-     */
+  const { register, handleSubmit, reset } = useForm<AddProductFormData>(); //returns 1 object with many methods
+  const renderAddProductForm: SubmitHandler<AddProductFormData> = (data) => {
+    try {
+      dispatch(
+        addProduct({
+          title: data.title,
+          price: data.price,
+          description: data.description,
+          categoryId: data.categoryId,
+          images: [data.image1, data.image2, data.image3],
+        })
+      );
+      reset();
+    } catch (error) {
+      alert(error);
     }
   };
 
-  const { register, handleSubmit, reset } = useForm<AddProductFormData>(); //returns 1 object with many methods
-  const renderAddProductForm: SubmitHandler<AddProductFormData> = (data) => {
-    console.log(data);
-
-    dispatch(
-      addProduct({
-        title: "New Product",
-        price: 7777,
-        description: "string",
-        categoryId: 1,
-        images: ["string"],
-      })
-    );
-
-    reset();
-  };
-
   return (
-    <div>
-      <form onSubmit={handleSubmit(renderAddProductForm)}>
-        <Box display="flex" flexDirection="column" width="15em">
-          <h2>Add Product</h2>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            {...register("title", { required: true })}
-          />
-          <label htmlFor="price">Price</label>
-          <input
-            type="number"
-            id="price"
-            {...register("price", { required: true })}
-          />
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            id="description"
-            {...register("description", { required: true })}
-          />
-          <label htmlFor="categoryId">Category ID</label>
-          <input
-            type="number"
-            id="categoryId"
-            {...register("categoryId", { required: true })}
-          />
-          {/**TO FORMAT THESE TWO */}
-          <label htmlFor="images">Image URL</label>
-          <input
-            type="url"
-            id="images"
-            {...register("images", { required: true })}
-          />
-          <button type="submit" onClick={onClick}>
-            Create
-          </button>
-        </Box>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit(renderAddProductForm)}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        gap={1}
+        sx={{
+          "& .MuiTextField-root": { width: "25ch" },
+        }}
+      >
+        <h2>Add Product</h2>
+        <TextField
+          required
+          id="title"
+          label="Product Title"
+          type="text"
+          variant="outlined"
+          size="small"
+          placeholder="Fez"
+          {...register("title")}
+        />
+        <TextField
+          required
+          id="price"
+          label="Price"
+          type="number"
+          variant="outlined"
+          size="small"
+          placeholder="12"
+          {...register("price")}
+        />
+        <TextField
+          required
+          id="description"
+          label="Description"
+          type="text"
+          variant="outlined"
+          size="small"
+          placeholder="This is the best hat ever"
+          {...register("description")}
+        />
+        <TextField
+          required
+          id="categoryId"
+          label="Category ID"
+          type="number"
+          variant="outlined"
+          size="small"
+          placeholder="1"
+          {...register("categoryId")}
+        />
+        {/**TO FORMAT THESE TWO */}
+        <TextField
+          required
+          id="image1"
+          label="Image URL #1"
+          type="url"
+          variant="outlined"
+          size="small"
+          placeholder="https://"
+          {...register("image1")}
+        />
+        <TextField
+          id="image2"
+          label="Image URL #2"
+          type="url"
+          variant="outlined"
+          size="small"
+          placeholder="https://"
+          {...register("image2")}
+        />
+        <TextField
+          id="image3"
+          label="Image URL #3"
+          type="url"
+          variant="outlined"
+          size="small"
+          placeholder="https://"
+          {...register("image3")}
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          startIcon={<ShoppingCartIcon />}
+          size="medium"
+          color="secondary"
+        >
+          Create
+        </Button>
+      </Box>
+    </form>
   );
 };
 

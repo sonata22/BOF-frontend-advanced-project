@@ -11,6 +11,7 @@ import AddProduct from "../components/forms/AddProductForm";
 import Users from "../components/lists/UsersList";
 import CategoriesList from "../components/lists/CategoriesList";
 import CreateUserViaAdminForm from "../components/forms/CreateUserViaAdminForm";
+import OfflineBoltIcon from "@mui/icons-material/OfflineBolt";
 
 const Login = () => {
   const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
@@ -36,16 +37,28 @@ const Login = () => {
               {user && (
                 <div>
                   {user?.role === "admin" && (
-                    <div>
-                      <h1>Admin Panel</h1>
-                      <Divider variant="fullWidth" />
-
-                      <Box display="flex" justifyContent="space-evenly" gap={1}>
-                        <AddProduct />
-                        <AddCategory />
-                        <CreateUserViaAdminForm />
+                    <Box>
+                      <Box
+                        display="flex"
+                        flexDirection="row"
+                        paddingLeft={5}
+                        position="sticky"
+                        top={0}
+                        bgcolor="white"
+                        sx={{ zIndex: 5 }}
+                      >
+                        <h2>
+                          <OfflineBoltIcon color="primary" />
+                          Admin Panel
+                        </h2>
                       </Box>
-                    </div>
+                      <Divider variant="middle" />
+                      <Box display="flex" justifyContent="space-evenly" gap={1}>
+                        <CreateUserViaAdminForm />
+                        <AddCategory />
+                        <AddProduct />
+                      </Box>
+                    </Box>
                   )}
                 </div>
               )}

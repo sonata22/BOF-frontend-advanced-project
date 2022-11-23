@@ -68,21 +68,25 @@ const productSlice = createSlice({
       .addCase(
         fetchSingleProduct.fulfilled,
         (state, action: PayloadAction<Product>) => {
-          state.singleProduct = action.payload
+          state.singleProduct = action.payload;
         }
       )
-      {/**.addCase(updateProduct.fulfilled, (state, action) => {
-        return state.map((item) => {
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        state.singleProduct = action.payload;
+
+        {
+          /**state.singleProduct.map((item) => {
           if (item.id === action.payload.id) {
             item = action.payload;
           }
           return item;
-        });
+        }); */
+        }
       })
       .addCase(addProduct.fulfilled, (state, action) => {
-        state.push(action.payload);
-      }); */
-      }
+        //state.push(action.payload);
+        state.singleProduct = action.payload;
+      });
   },
 });
 

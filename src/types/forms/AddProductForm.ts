@@ -1,7 +1,9 @@
 export interface AddProductFormData {
   title: string;
   price: number;
-  description:string;
+  description: string;
   categoryId: number;
-  images: string[];
+  image1: string;
+  image2: string;
+  image3: string;
 }
