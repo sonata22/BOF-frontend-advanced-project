@@ -34,7 +34,7 @@ const Profile = () => {
             lineHeight={0}
             margin={1}
           >
-            <h3>Nickname</h3>
+            <h3>User Name</h3>
             <p>{user.name}</p>
             <h3>Email</h3>
             <p>{user.email}</p>

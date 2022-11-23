@@ -10,6 +10,8 @@ const AddProductForm = () => {
   const dispatch = useAppDispatch();
 
   const onClick = () => {
+    {
+      /**
     dispatch(
       addProduct({
         title: "IT's Me!",
@@ -18,15 +20,25 @@ const AddProductForm = () => {
         categoryId: 1,
         images: ["string"],
       })
-    );
+    ); 
+     */
+    }
   };
-    let result = {}
 
   const { register, handleSubmit, reset } = useForm<AddProductFormData>(); //returns 1 object with many methods
   const renderAddProductForm: SubmitHandler<AddProductFormData> = (data) => {
     console.log(data);
-    result = data
-    console.log(result)
+
+    dispatch(
+      addProduct({
+        title: "New Product",
+        price: 7777,
+        description: "string",
+        categoryId: 1,
+        images: ["string"],
+      })
+    );
+
     reset();
   };
 
