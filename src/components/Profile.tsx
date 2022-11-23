@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, ListItem, ListItemText } from "@mui/material";
+import { Avatar, Box, Button } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { logOut } from "../redux/reducers/users";
 import LogoutIcon from "@mui/icons-material/Logout";

@@ -24,7 +24,6 @@ const ProductCategory = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        position="fixed"
         margin={1}
       >
         <h1>{product.category?.name}</h1>

@@ -4,7 +4,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch } from "../../redux/hooks";
 import { addCategory } from "../../redux/reducers/categories";
 import { AddCategoryFormData } from "../../types/forms/AddCategoryForm";
-import AddIcon from "@mui/icons-material/Add";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 const AddCategory = () => {

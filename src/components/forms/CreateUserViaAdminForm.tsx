@@ -1,17 +1,12 @@
 import { Box, Button, MenuItem, TextField } from "@mui/material";
-import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch } from "../../redux/hooks";
 import { addUser } from "../../redux/reducers/users";
 import { SignUpFormData } from "../../types/forms/SignUpForm";
-import AddIcon from "@mui/icons-material/Add";
 import PersonIcon from "@mui/icons-material/Person";
 
 const CreateUserViaAdminForm = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
   const { register, handleSubmit, reset } = useForm<SignUpFormData>();
   const onSubmit: SubmitHandler<SignUpFormData> = (data) => {
     dispatch(addUser(data));

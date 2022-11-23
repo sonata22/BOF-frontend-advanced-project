@@ -8,14 +8,19 @@ import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteProduct from "../buttons/DeleteProduct";
+import { authenticate } from "../../redux/reducers/users";
 
 const SingleProduct = () => {
-  // Accessing value of a URL
   const params = useParams();
   const productId = Number(params.productId);
-
+  const dispatch = useAppDispatch(); // Authenticate automapically upon reload until token expire
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    if (token) {
+      dispatch(authenticate(token));
+    }
+  }, [dispatch, token]); //------------------------------------------------------------------
   const product = useAppSelector((state) => state.productReducer.singleProduct);
-  const dispatch = useAppDispatch();
 
   const onEdit = () => {
     dispatch(

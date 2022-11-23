@@ -1,6 +1,5 @@
-import { Box, Divider, ListItemIcon, MenuItem, MenuList } from "@mui/material";
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Box, ListItemIcon, MenuItem, MenuList } from "@mui/material";
+import { Link } from "react-router-dom";
 import ForwardButton from "./buttons/ForwardButton";
 import ReturnButton from "./buttons/ReturnButton";
 import HomeIcon from "@mui/icons-material/Home";

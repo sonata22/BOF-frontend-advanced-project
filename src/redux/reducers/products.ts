@@ -87,15 +87,6 @@ const productSlice = createSlice({
       )
       .addCase(updateProduct.fulfilled, (state, action) => {
         state.singleProduct = action.payload;
-
-        {
-          /**state.singleProduct.map((item) => {
-          if (item.id === action.payload.id) {
-            item = action.payload;
-          }
-          return item;
-        }); */
-        }
       })
       .addCase(addProduct.fulfilled, (state, action) => {
         //state.push(action.payload);

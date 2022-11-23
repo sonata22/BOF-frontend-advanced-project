@@ -1,12 +1,12 @@
 import { Box, Grid } from "@mui/material";
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import EditProductForm from "../components/forms/EditProductForm";
 import ProductCategory from "../components/single/ProductCategory";
 import SingleProduct from "../components/single/SingleProduct";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { fetchSingleProduct } from "../redux/reducers/products";
+import { useAppSelector } from "../redux/hooks";
 
 const SingleProductPage = () => {
+  const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
+
   return (
     <div>
       <Box>
@@ -18,6 +18,7 @@ const SingleProductPage = () => {
             <SingleProduct />
           </Grid>
           <Grid item xs={2.5}>
+            {user?.role === "admin" && <EditProductForm />}
             <ProductCategory />
           </Grid>
         </Grid>

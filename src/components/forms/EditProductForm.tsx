@@ -1,23 +1,29 @@
 import { Box, Button, TextField } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
-
-import { useAppDispatch } from "../../redux/hooks";
-import { addProduct } from "../../redux/reducers/products";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { updateProduct } from "../../redux/reducers/products";
 import { AddProductFormData } from "../../types/forms/AddProductForm";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import EditIcon from "@mui/icons-material/Edit";
+import { useParams } from "react-router-dom";
 
-const AddProductForm = () => {
+const EditProductForm = () => {
+  const params = useParams();
+  const product = useAppSelector((state) => state.productReducer.singleProduct);
+  const productId = Number(params.productId);
   const dispatch = useAppDispatch();
-  const { register, handleSubmit, reset } = useForm<AddProductFormData>(); //returns 1 object with many methods
+  const { register, handleSubmit, reset } = useForm<AddProductFormData>();
   const renderAddProductForm: SubmitHandler<AddProductFormData> = (data) => {
     try {
       dispatch(
-        addProduct({
-          title: data.title,
-          price: data.price,
-          description: data.description,
-          categoryId: data.categoryId,
-          images: [data.image1, data.image2, data.image3],
+        updateProduct({
+          id: productId,
+          data: {
+            title: data.title,
+            price: data.price,
+            description: data.description,
+            categoryId: data.categoryId,
+            images: [data.image1, data.image2, data.image3],
+          },
         })
       );
       reset();
@@ -25,7 +31,6 @@ const AddProductForm = () => {
       alert(error);
     }
   };
-
   return (
     <form onSubmit={handleSubmit(renderAddProductForm)}>
       <Box
@@ -38,7 +43,7 @@ const AddProductForm = () => {
           "& .MuiTextField-root": { width: "25ch" },
         }}
       >
-        <h2>Add Product</h2>
+        <h2>Edit Product</h2>
         <TextField
           required
           id="title"
@@ -48,6 +53,10 @@ const AddProductForm = () => {
           size="small"
           placeholder="Fez"
           {...register("title")}
+          defaultValue={product?.title}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         <TextField
           required
@@ -58,6 +67,10 @@ const AddProductForm = () => {
           size="small"
           placeholder="12"
           {...register("price")}
+          defaultValue={product?.price}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         <TextField
           required
@@ -68,6 +81,10 @@ const AddProductForm = () => {
           size="small"
           placeholder="This is the best hat ever"
           {...register("description")}
+          defaultValue={product?.description}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         <TextField
           required
@@ -78,8 +95,11 @@ const AddProductForm = () => {
           size="small"
           placeholder="1"
           {...register("categoryId")}
+          defaultValue={product?.category?.id}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
-        {/**TO FORMAT THESE TWO */}
         <TextField
           required
           id="image1"
@@ -89,6 +109,10 @@ const AddProductForm = () => {
           size="small"
           placeholder="https://"
           {...register("image1")}
+          defaultValue={product?.images[0]}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         <TextField
           id="image2"
@@ -98,6 +122,10 @@ const AddProductForm = () => {
           size="small"
           placeholder="https://"
           {...register("image2")}
+          defaultValue={product?.images[1]}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         <TextField
           id="image3"
@@ -107,19 +135,23 @@ const AddProductForm = () => {
           size="small"
           placeholder="https://"
           {...register("image3")}
+          defaultValue={product?.images[2]}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         <Button
           type="submit"
           variant="contained"
-          startIcon={<ShoppingCartIcon />}
+          startIcon={<EditIcon />}
           size="medium"
           color="secondary"
         >
-          Create
+          Update
         </Button>
       </Box>
     </form>
   );
 };
 
-export default AddProductForm;
+export default EditProductForm;

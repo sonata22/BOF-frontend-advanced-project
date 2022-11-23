@@ -9,7 +9,6 @@ import { store } from "../redux/store";
 import AddCategory from "../components/forms/AddCategoryForm";
 import AddProduct from "../components/forms/AddProductForm";
 import Users from "../components/lists/UsersList";
-import CategoriesList from "../components/lists/CategoriesList";
 import CreateUserViaAdminForm from "../components/forms/CreateUserViaAdminForm";
 import OfflineBoltIcon from "@mui/icons-material/OfflineBolt";
 
@@ -22,7 +21,7 @@ const Login = () => {
     if (token) {
       dispatch(authenticate(token));
     }
-  }, []); //------------------------------------------------------------------
+  }, [dispatch, token]); //------------------------------------------------------------------
 
   return (
     <div>

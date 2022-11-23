@@ -1,5 +1,4 @@
-import { Button, IconButton } from "@mui/material";
-import React from "react";
+import { IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
