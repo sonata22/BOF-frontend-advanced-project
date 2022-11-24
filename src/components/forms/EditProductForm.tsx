@@ -45,7 +45,6 @@ const EditProductForm = () => {
       >
         <h2>Edit Product</h2>
         <TextField
-          required
           id="title"
           label="Product Title"
           type="text"
@@ -59,7 +58,6 @@ const EditProductForm = () => {
           }}
         />
         <TextField
-          required
           id="price"
           label="Price"
           type="number"
@@ -73,7 +71,6 @@ const EditProductForm = () => {
           }}
         />
         <TextField
-          required
           id="description"
           label="Description"
           type="text"
@@ -87,7 +84,6 @@ const EditProductForm = () => {
           }}
         />
         <TextField
-          required
           id="categoryId"
           label="Category ID"
           type="number"
@@ -101,7 +97,6 @@ const EditProductForm = () => {
           }}
         />
         <TextField
-          required
           id="image1"
           label="Image URL #1"
           type="url"

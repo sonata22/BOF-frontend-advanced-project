@@ -62,7 +62,9 @@ const userSlice = createSlice({
         state.currentUser = action.payload;
       })
       .addCase(addUser.fulfilled, (state, action: PayloadAction<User>) => {
-        state.currentUser = action.payload;
+        if (state.currentUser === undefined) {
+          state.currentUser = action.payload;
+        }
       });
   },
 });

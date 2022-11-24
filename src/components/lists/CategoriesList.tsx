@@ -1,8 +1,9 @@
-import { Avatar, Box, LinearProgress, List, ListItem } from "@mui/material";
+import { Avatar, Box, Divider, LinearProgress, List, ListItem } from "@mui/material";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchAllCategories } from "../../redux/reducers/categories";
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 
 const CategoriesList = () => {
   const categories = useAppSelector(
@@ -14,7 +15,23 @@ const CategoriesList = () => {
   }, [dispatch]);
   return (
     <div>
-      <h1>All Categories</h1>
+      <Box
+        display="flex"
+        flexDirection="row"
+        paddingLeft={5}
+        position="sticky"
+        top={0}
+        bgcolor="white"
+        sx={{ zIndex: 5 }}
+      >
+        <h2>
+          <ListItem>
+            <DoubleArrowIcon color="primary" />
+            All Categories
+          </ListItem>
+        </h2>
+      </Box>
+      <Divider variant="middle" />
       {categories.length > 0 ? (
         <Box display="flex" flexDirection="row" flexWrap="wrap">
           {categories.map((item) => (

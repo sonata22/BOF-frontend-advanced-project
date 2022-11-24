@@ -19,9 +19,7 @@ const Products = () => {
           <Grid item xs={8}>
             <ProductsList />
           </Grid>
-          <Grid item xs={2}>
-            <h1>Something here</h1>
-          </Grid>
+          <Grid item xs={2}></Grid>
         </Grid>
       </Box>
     </div>

@@ -2,11 +2,10 @@ import { Box, IconButton } from "@mui/material";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { addProduct, fetchSingleProduct } from "../../redux/reducers/products";
+import { fetchSingleProduct } from "../../redux/reducers/products";
 import AddToFavourite from "../ToFavourites";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteProduct from "../buttons/DeleteProduct";
 import { authenticate } from "../../redux/reducers/users";
 
@@ -21,25 +20,11 @@ const SingleProduct = () => {
     }
   }, [dispatch, token]); //------------------------------------------------------------------
   const product = useAppSelector((state) => state.productReducer.singleProduct);
-
-  const onEdit = () => {
-    dispatch(
-      addProduct({
-        title: "HEREITISSS",
-        price: 7777,
-        description: "string",
-        categoryId: 1,
-        images: ["string"],
-      })
-    );
-  };
-
   useEffect(() => {
     if (productId) {
       dispatch(fetchSingleProduct(productId));
     }
   }, [dispatch, productId]);
-
   if (!product) {
     return <h1>Loading</h1>;
   }
@@ -73,9 +58,6 @@ const SingleProduct = () => {
         <AddToFavourite />
         <IconButton color="primary">
           <AddShoppingCartIcon />
-        </IconButton>
-        <IconButton onClick={onEdit} color="primary">
-          <EditIcon />
         </IconButton>
         <DeleteProduct />
       </Box>

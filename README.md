@@ -13,7 +13,7 @@
     - sort products by categories
     - sort products by price
     + add new product
-    - update and delete a product (enable update & delete features only for admin of the webapp)
+    + update and delete a product (enable update & delete features only for admin of the webapp)
    User Reducer:
     + get all users
     - get a single user (feature no longer supported by API)
@@ -33,7 +33,7 @@ Want to implement additionally:
         - categories
     - Favourites Page
     - Button tooltips (e.g. when it is disabled to inform user about smth)
-    - Sign Up
+    + Sign Up
     - Show/Hide password icon logic
     - Show/Hide button for password in profile or just remove it
     - Music Player
@@ -47,6 +47,7 @@ Want to implement additionally:
     + Only admin can create admin accounts
     - Edit category from single page
     - Green circle on Profile page when user is logged in
+    - Pagination?
 
 
 

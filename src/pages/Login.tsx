@@ -1,4 +1,4 @@
-import { Box, Divider, Grid } from "@mui/material";
+import { Box, Divider, Grid, ListItem } from "@mui/material";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
 import LoginForm from "../components/forms/LoginForm";
@@ -47,8 +47,10 @@ const Login = () => {
                         sx={{ zIndex: 5 }}
                       >
                         <h2>
-                          <OfflineBoltIcon color="primary" />
-                          Admin Panel
+                          <ListItem>
+                            <OfflineBoltIcon color="primary" />
+                            Admin Panel
+                          </ListItem>
                         </h2>
                       </Box>
                       <Divider variant="middle" />
