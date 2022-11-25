@@ -3,10 +3,11 @@
 ## Requirement
 
 1. Endpoint: [https://fakeapi.platzi.com/](https://fakeapi.platzi.com/)
-2. Pages AT LEAST: Home, Product, Profile, Cart
+2. Pages AT LEAST: +Home, +Product, +Profile, -Cart
     + Profile - only available if user logins
     - Cart - can be a page or a modal
 3. Button - to switch themes of the web app
+    - Theme switch
 4. Store Reducer:
     + get all products
     + get a single product
@@ -23,7 +24,7 @@
     - add product to cart
     - remove products from cart
     - update products's quantity in cart
-5. When adding routers to your application, programatically set certain routes to be private. For example, route to user profile page should not be accessible if user has not logged in.
+5. + When adding routers to your application, programatically set certain routes to be private. For example, route to user profile page should not be accessible if user has not logged in.
 
 Want to implement additionally:
     - SingleRandomProduct

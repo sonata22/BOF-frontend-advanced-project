@@ -1,18 +1,27 @@
-import { Box, Divider, LinearProgress, List, ListItem } from "@mui/material";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import {
+  Box,
+  Divider,
+  IconButton,
+  LinearProgress,
+  List,
+  ListItem,
+} from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { fetchAllProducts } from "../../redux/reducers/products";
-import CategoryIcon from "@mui/icons-material/Category";
+import { Link } from "react-router-dom";
+import CancelIcon from "@mui/icons-material/Cancel";
+import { positions } from "@mui/system";
+import { removeFromFavourites } from "../../redux/reducers/favourites";
 
-const ProductsList = () => {
-  const products = useAppSelector((state) => state.productReducer.products);
+const FavouriteList = () => {
+  const favourites = useAppSelector(
+    (state) => state.favouriteReducer.favourite
+  );
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchAllProducts());
-  }, [dispatch]);
-
+  const product = useAppSelector((state) => state.productReducer.singleProduct);
+  const onDelete = () => {
+    dispatch(removeFromFavourites(product));
+  };
   return (
     <div>
       <Box
@@ -26,20 +35,20 @@ const ProductsList = () => {
       >
         <h2>
           <ListItem>
-            <CategoryIcon color="primary" />
-            Products List
+            <FavoriteIcon color="primary" />
+            Featured
           </ListItem>
         </h2>
       </Box>
       <Divider variant="fullWidth" />
-      {products.length > 0 ? (
+      {favourites.length > 0 ? (
         <Box
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
           justifyContent="center"
         >
-          {products.map((item) => (
+          {favourites.map((item) => (
             <List key={item.id}>
               <Box
                 width={210}
@@ -47,12 +56,13 @@ const ProductsList = () => {
                 flexDirection="column"
                 alignItems="center"
               >
+                <IconButton onClick={onDelete} sx={{ position: "fixed" }}>
+                  <CancelIcon />
+                </IconButton>
                 {item.images && (
                   <img src={item.images[0]} alt={item.title} width="205px" />
                 )}
-                <Link to={JSON.stringify(item.id)}>
-                  <b>{item.title}</b>
-                </Link>
+                <b>{item.title}</b>
                 <i>${item.price}</i>
                 {item.description}
               </Box>
@@ -60,10 +70,10 @@ const ProductsList = () => {
           ))}
         </Box>
       ) : (
-        <LinearProgress />
+        <i>Featured List is empty.</i>
       )}
     </div>
   );
 };
 
-export default ProductsList;
+export default FavouriteList;

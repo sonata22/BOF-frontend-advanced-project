@@ -5,6 +5,7 @@ import { Product, ProductReducer } from "../../types/Product";
 export const initialState: ProductReducer = {
   products: [],
   singleProduct: undefined,
+  cart: [],
 };
 
 export const fetchAllProducts = createAsyncThunk(

@@ -11,6 +11,7 @@ export interface Product {
 export interface ProductReducer {
   products: Product[];
   singleProduct: Product | undefined;
+  cart: Product[];
 }
 
 export interface ProductCategory {

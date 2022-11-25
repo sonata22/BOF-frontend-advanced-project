@@ -1,4 +1,4 @@
-import { Box, IconButton } from "@mui/material";
+import { Box, Divider, IconButton, ListItem } from "@mui/material";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -10,6 +10,7 @@ import DeleteProduct from "../buttons/DeleteProduct";
 import { authenticate } from "../../redux/reducers/users";
 
 const SingleProduct = () => {
+  const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
   const params = useParams();
   const productId = Number(params.productId);
   const dispatch = useAppDispatch(); // Authenticate automapically upon reload until token expire
@@ -30,24 +31,40 @@ const SingleProduct = () => {
   }
   return (
     <div>
-      <h2>
-        <InsertDriveFileIcon color="primary" />
-        {product.title} <i>${product.price}</i>
-      </h2>
       <Box
         display="flex"
         flexDirection="row"
-        flexWrap="wrap"
-        justifyContent="center"
-        gap={1}
+        paddingLeft={1}
+        position="sticky"
+        top={0}
+        bgcolor="white"
+        sx={{ zIndex: 5 }}
       >
-        <img src={product.images[0]} alt="" width="500" />
-        <Box display="flex" flexDirection="column">
-          <img src={product.images[1]} alt="" width="167" />
-          <img src={product.images[2]} alt="" width="167" />
-          <img src={product.images[1]} alt="" width="167" />
-        </Box>
+        <h2>
+          <ListItem>
+            <InsertDriveFileIcon color="primary" />
+            {product.title} <i>${product.price}</i>
+          </ListItem>
+        </h2>
       </Box>
+      <Divider variant="fullWidth" />
+      {product.images && (
+        <Box
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          justifyContent="center"
+          gap={1}
+          margin={1}
+        >
+          <img src={product.images[0]} alt="" width="500" />
+          <Box display="flex" flexDirection="column">
+            <img src={product.images[1]} alt="" width="167" />
+            <img src={product.images[2]} alt="" width="167" />
+            <img src={product.images[1]} alt="" width="167" />
+          </Box>
+        </Box>
+      )}
       <Box
         display="flex"
         flexDirection="row"
@@ -55,11 +72,15 @@ const SingleProduct = () => {
         gap={1}
         margin={1}
       >
-        <AddToFavourite />
-        <IconButton color="primary">
-          <AddShoppingCartIcon />
-        </IconButton>
-        <DeleteProduct />
+        {user?.role === "admin" && (
+          <Box display="flex">
+            <AddToFavourite />
+            <IconButton color="primary">
+              <AddShoppingCartIcon />
+            </IconButton>
+            <DeleteProduct />
+          </Box>
+        )}
       </Box>
       <h3>Description</h3>
       <p>{product.description}</p>
