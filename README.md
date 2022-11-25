@@ -12,7 +12,7 @@
     + get all products
     + get a single product
     - sort products by categories
-    - sort products by price
+    + sort products by price
     + add new product
     + update and delete a product (enable update & delete features only for admin of the webapp)
    User Reducer:
@@ -32,17 +32,17 @@ Want to implement additionally:
         - users
         - products
         - categories
-    - Favourites Page
+    -+ Favourites Page (needs to be modified)
     - Button tooltips (e.g. when it is disabled to inform user about smth)
     + Sign Up
     - Show/Hide password icon logic
-    - Show/Hide button for password in profile or just remove it
+    + Show/Hide button for password in profile or just remove it
     - Music Player
     - Products on sale??
     - Image slides or carousels
     - Commenting a product functionality
     - Rating?
-    - Style single product in AllProducts list
+    + Style single product in AllProducts list
     - Order button in Cart with hint "Gotcha!" and maybe purchase functionality... that's a long way ahead
     - Validation
     + Only admin can create admin accounts

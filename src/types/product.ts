@@ -1,17 +1,16 @@
 export interface Product {
   id?: number;
-  title?: string;
-  price?: number;
+  title: string;
+  price: number;
   description?: string;
   category?: ProductCategory;
   images: string[];
-  categoryId?: number;
+  categoryId: number;
 }
 
 export interface ProductReducer {
   products: Product[];
   singleProduct: Product | undefined;
-  cart: Product[];
 }
 
 export interface ProductCategory {

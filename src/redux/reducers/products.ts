@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useActionData } from "react-router-dom";
 import { Product, ProductReducer } from "../../types/Product";
 
 export const initialState: ProductReducer = {
   products: [],
   singleProduct: undefined,
-  cart: [],
 };
 
 export const fetchAllProducts = createAsyncThunk(
@@ -71,7 +71,21 @@ export const deleteProduct = createAsyncThunk(
 const productSlice = createSlice({
   name: "productReducer",
   initialState,
-  reducers: {},
+  reducers: {
+    sortPrice: (state, action) => {
+      if (action.payload === "asc") {
+        state.products.sort((a, b) => a.price - b.price);
+      } else {
+        state.products.sort((a, b) => b.price - a.price);
+      }
+    },
+    sortTitleAsc: (state) => {
+      state.products.sort((a, b) => (a.title > b.title ? 1 : -1));
+    },
+    sortTitleDesc: (state) => {
+      state.products.sort((a, b) => (a.title < b.title ? 1 : -1));
+    },
+  },
   extraReducers: (build) => {
     build
       .addCase(
@@ -100,4 +114,5 @@ const productSlice = createSlice({
 });
 
 const productReducer = productSlice.reducer;
+export const { sortPrice, sortTitleAsc, sortTitleDesc } = productSlice.actions;
 export default productReducer;

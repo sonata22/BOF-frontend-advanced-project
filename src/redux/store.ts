@@ -5,7 +5,7 @@ import favouriteReducer from "./reducers/favourites";
 import productReducer from "./reducers/products";
 import userReducer from "./reducers/users";
 
-// Reducers are beeing called in this file
+
 
 export const store = configureStore({
   reducer: {

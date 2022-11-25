@@ -1,4 +1,3 @@
-import { Search } from "@mui/icons-material";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -21,6 +20,7 @@ import Categories from "./redux/reducers/categories";
 import CategoriesList from "./components/lists/CategoriesList";
 import SingleCategory from "./components/single/SingleCategory";
 import SingleCategoryPage from "./pages/SingleCategoryPage";
+import Search from "./pages/Search";
 
 function App() {
   return (

@@ -1,11 +1,11 @@
 import React from "react";
 import { ToggleButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   addToFavourites,
   removeFromFavourites,
-} from "../redux/reducers/favourites";
+} from "../../redux/reducers/favourites";
 
 const ToFavourites = () => {
   const [selected, setSelected] = React.useState(false);

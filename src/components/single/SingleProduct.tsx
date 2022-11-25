@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchSingleProduct } from "../../redux/reducers/products";
-import AddToFavourite from "../ToFavourites";
+import AddToFavourite from "../buttons/ToFavourites";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import DeleteProduct from "../buttons/DeleteProduct";

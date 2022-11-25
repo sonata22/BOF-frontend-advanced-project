@@ -1,12 +1,11 @@
-import { Box, Grid } from "@mui/material";
-import React from "react";
+import { Box, Button, Grid, IconButton } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import ProductsList from "../components/lists/ProductsList";
-import AddCategory from "../components/forms/AddCategoryForm";
-import AddProduct from "../components/forms/AddProductForm";
-import NavBar from "../components/NavBar";
-import ProgressLog from "../components/ProgressLog";
-import Users from "../components/lists/UsersList";
-import RandomNum from "../components/RandomNum";
+import { useAppDispatch } from "../redux/hooks";
+import { sortPrice } from "../redux/reducers/products";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import SortForm from "../components/forms/SortForm";
 
 const Products = () => {
   return (
@@ -14,12 +13,14 @@ const Products = () => {
       <Box>
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            {/**<NavBar /> */}
+            {/** Placeholder */}
           </Grid>
           <Grid item xs={8}>
             <ProductsList />
           </Grid>
-          <Grid item xs={2}></Grid>
+          <Grid item xs={2}>
+            <SortForm />
+          </Grid>
         </Grid>
       </Box>
     </div>
