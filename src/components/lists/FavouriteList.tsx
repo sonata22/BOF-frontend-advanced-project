@@ -14,10 +14,8 @@ import { positions } from "@mui/system";
 import { removeFromFavourites } from "../../redux/reducers/favourites";
 
 const FavouriteList = () => {
-  const favourites = useAppSelector(
-    (state) => state.favouriteReducer.favourite
-  );
   const dispatch = useAppDispatch();
+  const favourites = useAppSelector((state) => state.favouriteReducer);
   const product = useAppSelector((state) => state.productReducer.singleProduct);
   const onDelete = () => {
     dispatch(removeFromFavourites(product));

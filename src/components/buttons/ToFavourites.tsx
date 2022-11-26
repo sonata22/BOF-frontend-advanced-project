@@ -11,16 +11,17 @@ const ToFavourites = () => {
   const [selected, setSelected] = React.useState(false);
 
   const product = useAppSelector((state) => state.productReducer.singleProduct);
-  const featured = useAppSelector((state) => state.favouriteReducer.favourite);
+  const featured = useAppSelector((state) => state.favouriteReducer);
 
   const dispatch = useAppDispatch();
 
   const onClick = () => {
-    if (product && !featured.includes(product)) {
-      dispatch(addToFavourites(product));
-      setSelected(true);
+    {
+      product && dispatch(addToFavourites(product));
     }
+    setSelected(true);
   };
+
   return (
     <ToggleButton value="check" selected={selected} onChange={onClick}>
       <FavoriteIcon />
