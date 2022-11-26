@@ -15,7 +15,7 @@ export interface ProductReducer {
 
 export interface ProductCategory {
   id: number;
-  name: Name;
+  name: string;
   image: string;
   keyLoremSpace?: KeyLoremSpace;
 }

@@ -11,14 +11,15 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { Link } from "react-router-dom";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { positions } from "@mui/system";
-import { removeFromFavourites } from "../../redux/reducers/favourites";
+import { toggleFavourites } from "../../redux/reducers/favourites";
 
 const FavouriteList = () => {
   const dispatch = useAppDispatch();
   const favourites = useAppSelector((state) => state.favouriteReducer);
+  console.log("call from fav list",favourites)
   const product = useAppSelector((state) => state.productReducer.singleProduct);
   const onDelete = () => {
-    dispatch(removeFromFavourites(product));
+    dispatch(toggleFavourites(product));
   };
   return (
     <div>
@@ -60,7 +61,9 @@ const FavouriteList = () => {
                 {item.images && (
                   <img src={item.images[0]} alt={item.title} width="205px" />
                 )}
-                <b>{item.title}</b>
+                <Link to={`../products/${item.id}`}>
+                  <b>{item.title}</b>
+                </Link>
                 <i>${item.price}</i>
                 {item.description}
               </Box>
