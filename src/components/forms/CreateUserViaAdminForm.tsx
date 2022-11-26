@@ -13,7 +13,6 @@ const CreateUserViaAdminForm = () => {
     reset();
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
       <Box
         display="flex"
         flexDirection="column"
@@ -23,6 +22,7 @@ const CreateUserViaAdminForm = () => {
         sx={{
           "& .MuiTextField-root": { width: "25ch" },
         }}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <h2>Register User</h2>
         <TextField
@@ -102,7 +102,6 @@ const CreateUserViaAdminForm = () => {
           Register
         </Button>
       </Box>
-    </form>
   );
 };
 

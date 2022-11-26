@@ -4,26 +4,23 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchSingleCategory } from "../../redux/reducers/categories";
 import CreateIcon from "@mui/icons-material/Create";
+import EditCategoryModal from "../modals/EditCategoryModal";
 
 const SingleCategory = () => {
   const params = useParams();
   const categoryId = Number(params.categoryId);
-
   const category = useAppSelector(
     (state) => state.categoryReducer.singleCategory
   );
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     if (categoryId) {
       dispatch(fetchSingleCategory(categoryId));
     }
   }, [dispatch, categoryId]);
-
   if (!category) {
     return <h1>Loading</h1>;
   }
-
   return (
     <Box
       display="flex"
@@ -49,14 +46,7 @@ const SingleCategory = () => {
         <h3>Category ID</h3>
         <p>{category.id}</p>
       </Box>
-      <Button
-        type="button"
-        variant="contained"
-        endIcon={<CreateIcon />}
-        size="medium"
-      >
-        Edit
-      </Button>
+      <EditCategoryModal />
     </Box>
   );
 };

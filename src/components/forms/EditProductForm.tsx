@@ -1,16 +1,25 @@
 import { Box, Button, TextField } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { updateProduct } from "../../redux/reducers/products";
+import {
+  fetchSingleProduct,
+  updateProduct,
+} from "../../redux/reducers/products";
 import { AddProductFormData } from "../../types/forms/AddProductForm";
 import EditIcon from "@mui/icons-material/Edit";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const EditProductForm = () => {
   const params = useParams();
-  const product = useAppSelector((state) => state.productReducer.singleProduct);
   const productId = Number(params.productId);
   const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (productId) {
+      dispatch(fetchSingleProduct(productId));
+    }
+  });
+  const product = useAppSelector((state) => state.productReducer.singleProduct);
   const { register, handleSubmit, reset } = useForm<AddProductFormData>();
   const renderAddProductForm: SubmitHandler<AddProductFormData> = (data) => {
     try {

@@ -1,8 +1,8 @@
-import { Avatar, Box, Button, ListItem, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { authenticate, logOut } from "../../redux/reducers/users";
+import { useAppDispatch } from "../../redux/hooks";
+import { authenticate } from "../../redux/reducers/users";
 import LoginIcon from "@mui/icons-material/Login";
 
 const LoginForm = () => {
@@ -25,7 +25,6 @@ const LoginForm = () => {
       console.log(error); // temporary
     }
   };
-
   return (
     <div>
       <Box
@@ -73,4 +72,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-

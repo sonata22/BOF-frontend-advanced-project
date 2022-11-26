@@ -1,23 +1,19 @@
 import React from "react";
-import { ToggleButton } from "@mui/material";
+import { IconButton, ToggleButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { toggleFavourites } from "../../redux/reducers/favourites";
+import { addToFav } from "../../redux/reducers/favourites";
 
 const ToFavourites = () => {
-  const [selected, setSelected] = React.useState(false);
   const product = useAppSelector((state) => state.productReducer.singleProduct);
   const dispatch = useAppDispatch();
   const onClick = () => {
-    {
-      product && dispatch(toggleFavourites(product));
-    }
-    setSelected(true);
+    product && dispatch(addToFav(product));
   };
   return (
-    <ToggleButton value="check" selected={selected} onChange={onClick}>
+    <IconButton onClick={onClick} color="primary">
       <FavoriteIcon />
-    </ToggleButton>
+    </IconButton>
   );
 };
 

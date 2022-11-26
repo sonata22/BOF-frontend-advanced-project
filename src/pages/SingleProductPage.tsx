@@ -27,7 +27,6 @@ const SingleProductPage = () => {
             <SingleProduct />
           </Grid>
           <Grid item xs={2}>
-            {user?.role === "admin" && <EditProductForm />}
             <ProductCategory />
           </Grid>
         </Grid>

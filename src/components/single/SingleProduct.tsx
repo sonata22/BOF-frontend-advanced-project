@@ -8,6 +8,7 @@ import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import DeleteProduct from "../buttons/DeleteProduct";
 import { authenticate } from "../../redux/reducers/users";
+import EditProductModal from "../modals/EditProductModal";
 
 const SingleProduct = () => {
   const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
@@ -72,21 +73,21 @@ const SingleProduct = () => {
         gap={1}
         margin={1}
       >
-        {user?.role === "customer" && (
-          <Box>
-            <IconButton color="primary">
-              <AddShoppingCartIcon />
-            </IconButton>
-            <AddToFavourite />
-          </Box>
-        )}
-        {user?.role === "admin" && (
+        {user?.role === "admin" ? (
           <Box display="flex">
             <IconButton color="primary">
               <AddShoppingCartIcon />
             </IconButton>
             <AddToFavourite />
+            <EditProductModal />
             <DeleteProduct />
+          </Box>
+        ) : (
+          <Box>
+            <IconButton color="primary">
+              <AddShoppingCartIcon />
+            </IconButton>
+            <AddToFavourite />
           </Box>
         )}
       </Box>

@@ -7,22 +7,19 @@ const favouriteSlice = createSlice({
   name: "favouriteReducer",
   initialState,
   reducers: {
-    toggleFavourites: (state, action) => {
+    addToFav: (state, action) => {
       const inFav = state.find((item) => {
         return item.id === action.payload.id;
       });
-      !inFav
-        ? (state = [...state, action.payload])
-        : state.splice(action.payload, 1);
+      !inFav && (state = [...state, action.payload]);
       return state;
     },
-    removeFromFavourites: (state, action) => {
-      state.splice(action.payload, 1);
-      console.log("remove invoced", state);
+    removeFromFav: (state, action) => {
+      return state.filter((state) => state.id !== action.payload);
     },
   },
 });
 
 const favouriteReducer = favouriteSlice.reducer;
-export const { toggleFavourites } = favouriteSlice.actions;
+export const { addToFav, removeFromFav } = favouriteSlice.actions;
 export default favouriteReducer;
