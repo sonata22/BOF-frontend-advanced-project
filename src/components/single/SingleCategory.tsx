@@ -31,7 +31,6 @@ const SingleCategory = () => {
       justifyContent="center"
       alignItems="center"
       position="fixed"
-      margin={1}
     >
       <h1>{category.name}</h1>
       <Avatar

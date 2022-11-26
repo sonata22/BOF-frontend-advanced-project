@@ -1,44 +1,28 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Box, Divider, LinearProgress, List, ListItem } from "@mui/material";
-import CategoryIcon from "@mui/icons-material/Category";
-
+import { Box, List } from "@mui/material";
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchAllProducts } from "../../redux/reducers/products";
 
-const ProductsList = () => {
-  const products = useAppSelector((state) => state.productReducer.products);
+const ProductsByCategory = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
+  const list = useAppSelector((state) => state.productReducer.products);
+  const params = useParams();
+  const categoryId = Number(params.categoryId);
+  const tempList = list.filter((item) => item.category?.id == categoryId);
   return (
     <div>
-      <Box
-        display="flex"
-        flexDirection="row"
-        paddingLeft={5}
-        position="sticky"
-        top={0}
-        bgcolor="white"
-        sx={{ zIndex: 5 }}
-      >
-        <h2>
-          <ListItem>
-            <CategoryIcon color="primary" />
-            Products List
-          </ListItem>
-        </h2>
-      </Box>
-      <Divider variant="fullWidth" />
-      {products.length > 0 ? (
+      {tempList.length > 0 ? (
         <Box
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
           justifyContent="center"
         >
-          {products.map((item) => (
+          {tempList.map((item) => (
             <List key={item.id}>
               <Box
                 width={210}
@@ -49,7 +33,7 @@ const ProductsList = () => {
                 {item.images && (
                   <img src={item.images[0]} alt={item.title} width="205px" />
                 )}
-                <Link to={JSON.stringify(item.id)}>
+                <Link to={`../../products/${item.id}`}>
                   <b>{item.title}</b>
                 </Link>
                 <i>${item.price}</i>
@@ -59,10 +43,10 @@ const ProductsList = () => {
           ))}
         </Box>
       ) : (
-        <LinearProgress />
+        <i>No products in this category</i>
       )}
     </div>
   );
 };
 
-export default ProductsList;
+export default ProductsByCategory;

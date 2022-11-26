@@ -34,7 +34,6 @@ const SortForm = () => {
         Price
       </Button>
       <Button
-        startIcon={<UnfoldMore />}
         variant="outlined"
         onClick={sortByTitleAsc}
         color="primary"
@@ -42,7 +41,6 @@ const SortForm = () => {
         Title Asc
       </Button>
       <Button
-        startIcon={<UnfoldMore />}
         variant="outlined"
         onClick={sortByTitleDesc}
         color="primary"

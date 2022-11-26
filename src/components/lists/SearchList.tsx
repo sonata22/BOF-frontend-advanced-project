@@ -1,18 +1,17 @@
-import { Box, Divider, List, ListItem } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Box, Divider, List, ListItem, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchAllProducts } from "../../redux/reducers/products";
-import SearchIcon from "@mui/icons-material/Search";
-import { Link } from "react-router-dom";
 
 const SearchList = () => {
-  const list = useAppSelector((state) => state.productReducer.products);
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
-
+  const list = useAppSelector((state) => state.productReducer.products);
   const [search, setSearch] = useState("");
   const tempList = list.filter((item) =>
     item.title.toLowerCase().includes(search.toLowerCase())
@@ -31,10 +30,13 @@ const SearchList = () => {
         <h2>
           <ListItem>
             <SearchIcon color="primary" />
-            <input
+            <TextField
+              id="seacrh"
+              label="Search"
               type="text"
-              name="text"
-              id="text"
+              variant="outlined"
+              size="small"
+              placeholder="Tasty Metal Chips"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />

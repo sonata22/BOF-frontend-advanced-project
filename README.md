@@ -11,7 +11,7 @@
 4. Store Reducer:
     + get all products
     + get a single product
-    - sort products by categories
+    + sort products by categories
     + sort products by price
     + add new product
     + update and delete a product (enable update & delete features only for admin of the webapp)

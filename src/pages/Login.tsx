@@ -13,25 +13,25 @@ import CreateUserViaAdminForm from "../components/forms/CreateUserViaAdminForm";
 import OfflineBoltIcon from "@mui/icons-material/OfflineBolt";
 
 const Login = () => {
-  const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
+  const user = useAppSelector((state) => state.userReducer.currentUser);
 
-  const dispatch = useAppDispatch(); // Authenticate automapically upon reload until token expire
+  const dispatch = useAppDispatch(); // Automatic authentication
   const token = localStorage.getItem("token");
   useEffect(() => {
     if (token) {
       dispatch(authenticate(token));
     }
-  }, [dispatch, token]); //------------------------------------------------------------------
+  }, [dispatch, token]); //-------------------------------------
 
   return (
     <div>
       <Provider store={store}>
         <Box>
-          <Grid container spacing={2}>
-            <Grid item xs={2}>
+          <Grid container spacing={0}>
+            <Grid item xs={1.5}>
               {/** Placeholder */}
             </Grid>
-            <Grid item xs={7.5}>
+            <Grid item xs={8.5}>
               {!user && <LoginForm />}
               {user && (
                 <div>
@@ -72,7 +72,7 @@ const Login = () => {
                 )}
               </div>
             </Grid>
-            <Grid item xs={2.5}>
+            <Grid item xs={2}>
               <Profile />
             </Grid>
           </Grid>

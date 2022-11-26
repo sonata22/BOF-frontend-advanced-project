@@ -5,7 +5,7 @@ export interface Product {
   description?: string;
   category?: ProductCategory;
   images: string[];
-  categoryId: number;
+  categoryId?: number;
 }
 
 export interface ProductReducer {

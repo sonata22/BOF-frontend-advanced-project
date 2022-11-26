@@ -13,26 +13,26 @@ import { authenticate } from "../redux/reducers/users";
 const Home = () => {
   const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
 
-  const dispatch = useAppDispatch(); // Authenticate automapically upon reload until token expire
+  const dispatch = useAppDispatch(); // Automatic authentication
   const token = localStorage.getItem("token");
   useEffect(() => {
     if (token) {
       dispatch(authenticate(token));
     }
-  }, []); //------------------------------------------------------------------
+  }, [dispatch, token]); //-------------------------------------
 
   return (
     <div>
       <Provider store={store}>
         <Box>
-          <Grid container spacing={2}>
-            <Grid item xs={2}>
+          <Grid container spacing={0}>
+            <Grid item xs={1.5}>
               {/**<NavBar /> */}
             </Grid>
-            <Grid item xs={7.5}>
+            <Grid item xs={8.5}>
               <CategoriesList />
             </Grid>
-            <Grid item xs={2.5}>
+            <Grid item xs={2}>
               {!user && <SignUpForm />}
               <ProgressLog />
               <h1>Random Product</h1>
@@ -42,6 +42,6 @@ const Home = () => {
       </Provider>
     </div>
   );
-};
+};;
 
 export default Home;

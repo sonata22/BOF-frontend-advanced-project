@@ -72,12 +72,20 @@ const SingleProduct = () => {
         gap={1}
         margin={1}
       >
-        {user?.role === "admin" && (
-          <Box display="flex">
-            <AddToFavourite />
+        {user?.role === "customer" && (
+          <Box>
             <IconButton color="primary">
               <AddShoppingCartIcon />
             </IconButton>
+            <AddToFavourite />
+          </Box>
+        )}
+        {user?.role === "admin" && (
+          <Box display="flex">
+            <IconButton color="primary">
+              <AddShoppingCartIcon />
+            </IconButton>
+            <AddToFavourite />
             <DeleteProduct />
           </Box>
         )}

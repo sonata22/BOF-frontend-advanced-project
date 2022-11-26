@@ -5,17 +5,26 @@ import { useAppDispatch } from "../redux/hooks";
 import { sortPrice } from "../redux/reducers/products";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+
 import SortForm from "../components/forms/SortForm";
+import { authenticate } from "../redux/reducers/users";
 
 const Products = () => {
+  const dispatch = useAppDispatch(); // Automatic authentication
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    if (token) {
+      dispatch(authenticate(token));
+    }
+  }, [dispatch, token]); //-------------------------------------
   return (
     <div>
       <Box>
-        <Grid container spacing={2}>
-          <Grid item xs={2}>
+        <Grid container spacing={0}>
+          <Grid item xs={1.5}>
             {/** Placeholder */}
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={8.5}>
             <ProductsList />
           </Grid>
           <Grid item xs={2}>
@@ -25,6 +34,6 @@ const Products = () => {
       </Box>
     </div>
   );
-};
+};;
 
 export default Products;
