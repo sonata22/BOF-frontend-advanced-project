@@ -61,10 +61,10 @@ const LoginForm = () => {
         <Button
           type="submit"
           variant="contained"
-          endIcon={<LoginIcon />}
+          startIcon={<LoginIcon />}
           size="medium"
         >
-          Submit
+          Log In
         </Button>
       </Box>
     </div>

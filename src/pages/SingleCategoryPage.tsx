@@ -21,28 +21,8 @@ const SingleCategoryPage = () => {
         <Grid item xs={1.5}>
           {/**<NavBar /> */}
         </Grid>
-        <Grid item xs={8.5}>
-          <Box
-            display="flex"
-            flexDirection="row"
-            paddingLeft={5}
-            position="sticky"
-            top={0}
-            bgcolor="white"
-            sx={{ zIndex: 5 }}
-          >
-            <h2>
-              <ListItem>
-                <CategoryIcon color="primary" />
-                Products in This Category
-              </ListItem>
-            </h2>
-          </Box>
-          <Divider variant="middle" />
+        <Grid item xs={10.5}>
           <ProductsByCategory />
-        </Grid>
-        <Grid item xs={2}>
-          <SingleCategory />
         </Grid>
       </Grid>
     </Box>

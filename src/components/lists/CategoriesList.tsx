@@ -1,7 +1,12 @@
 import {
   Avatar,
   Box,
+  Card,
+  CardActions,
+  CardHeader,
+  CardMedia,
   Divider,
+  IconButton,
   LinearProgress,
   List,
   ListItem,
@@ -11,6 +16,7 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchAllCategories } from "../../redux/reducers/categories";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
+import ReadMoreIcon from "@mui/icons-material/ReadMore";
 
 const CategoriesList = () => {
   const categories = useAppSelector(
@@ -27,41 +33,50 @@ const CategoriesList = () => {
         flexDirection="row"
         paddingLeft={5}
         position="sticky"
+        justifyContent="space-between"
         top={0}
         bgcolor="white"
         sx={{ zIndex: 5 }}
       >
         <h2>
-          <ListItem>
-            <DoubleArrowIcon color="primary" />
-            All Categories
-          </ListItem>
+          <i>Categories</i>
         </h2>
       </Box>
       <Divider variant="middle" />
       {categories.length > 0 ? (
-        <Box display="flex" flexDirection="row" flexWrap="wrap">
+        <Box
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          gap={1}
+          justifyContent="center"
+        >
           {categories.map((item) => (
             <List key={item.id}>
-              <Box width={200}>
-                <ListItem>
-                  <Avatar
+              <Box>
+                <Card sx={{ maxWidth: 260 }}>
+                  <CardMedia
+                    component="img"
+                    height="194"
+                    image={item.image}
                     alt={item.name}
-                    src={item.image}
-                    sx={{ width: 180, height: 180 }}
                   />
-                </ListItem>
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  justifyContent="center"
-                  alignItems="center"
-                  lineHeight={1.2}
-                  margin={1}
-                >
-                  <Link to={`/categories/${item.id}`}>{item.name}</Link>
-                  ID: {item.id}
-                </Box>
+                  <Box
+                    display="flex"
+                    flexDirection="row-reverse"
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <CardActions>
+                      <Link to={`/categories/${item.id}`}>
+                        <IconButton color="primary">
+                          <ReadMoreIcon />
+                        </IconButton>
+                      </Link>
+                    </CardActions>
+                    <Box paddingLeft={1.5}>{item.name}</Box>
+                  </Box>
+                </Card>
               </Box>
             </List>
           ))}

@@ -11,6 +11,7 @@ import AddProduct from "../components/forms/AddProductForm";
 import Users from "../components/lists/UsersList";
 import CreateUserViaAdminForm from "../components/forms/CreateUserViaAdminForm";
 import OfflineBoltIcon from "@mui/icons-material/OfflineBolt";
+import SignUpForm from "../components/forms/SignUpForm";
 
 const Login = () => {
   const user = useAppSelector((state) => state.userReducer.currentUser);
@@ -32,7 +33,25 @@ const Login = () => {
               {/** Placeholder */}
             </Grid>
             <Grid item xs={8.5}>
-              {!user && <LoginForm />}
+              {!user && (
+                <Box
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="center"
+                  alignItems="center"
+                  gap={2}
+                >
+                  <SignUpForm />
+                  <Divider
+                    orientation="vertical"
+                    variant="middle"
+                    light
+                    flexItem
+                    sx={{ height: "25em", marginTop: 11 }}
+                  />
+                  <LoginForm />
+                </Box>
+              )}
               {user && (
                 <div>
                   {user?.role === "admin" && (
@@ -54,7 +73,7 @@ const Login = () => {
                         </h2>
                       </Box>
                       <Divider variant="middle" />
-                      <Box display="flex" justifyContent="space-evenly" >
+                      <Box display="flex" justifyContent="space-evenly">
                         <CreateUserViaAdminForm />
                         <AddCategory />
                         <AddProduct />

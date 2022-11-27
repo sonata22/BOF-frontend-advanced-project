@@ -112,11 +112,11 @@ const SignUpForm = () => {
         <Button
           type="submit"
           variant="contained"
-          startIcon={<PersonIcon />}
+          endIcon={<PersonIcon />}
           size="medium"
           color="secondary"
         >
-          Register
+          Sign Up
         </Button>
       </Box>
     </form>

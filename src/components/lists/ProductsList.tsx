@@ -74,19 +74,25 @@ const ProductsList = () => {
                     alt={item.title}
                   />
                   <CardContent>
-                    ${item.price}
                     <Typography variant="body2" color="text.secondary">
                       {item.description}
                     </Typography>
                   </CardContent>
-
-                  <CardActions>
-                    <Link to={JSON.stringify(item.id)}>
-                      <IconButton color="primary">
-                        <ReadMoreIcon />
-                      </IconButton>
-                    </Link>
-                  </CardActions>
+                  <Box
+                    display="flex"
+                    flexDirection="row-reverse"
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <CardActions>
+                      <Link to={JSON.stringify(item.id)}>
+                        <IconButton color="primary">
+                          <ReadMoreIcon />
+                        </IconButton>
+                      </Link>
+                    </CardActions>
+                    <Box paddingLeft={1.5} >${item.price}</Box>
+                  </Box>
                 </Card>
               </Box>
             </List>

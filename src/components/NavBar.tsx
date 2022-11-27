@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Box, Button } from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import CategoryIcon from "@mui/icons-material/Category";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -7,11 +7,15 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import LoginIcon from "@mui/icons-material/Login";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
+import { generatePath } from "react-router";
 
 import { useAppSelector } from "../redux/hooks";
 import ForwardButton from "./buttons/ForwardButton";
 import ReturnButton from "./buttons/ReturnButton";
 import { linkStyle } from "../ui/style";
+import CasinoIcon from "@mui/icons-material/Casino";
+import GetRandomProductPath from "./GetRandomProductPath";
+import { useEffect } from "react";
 
 const NavBar = () => {
   const user = useAppSelector((state) => state.userReducer.currentUser);
@@ -87,6 +91,18 @@ const NavBar = () => {
             <Button variant="outlined" startIcon={<SearchIcon />}>
               Search
             </Button>
+          </Box>
+        </Link>
+        <Link
+          to={
+            "/products/" + JSON.stringify(Math.floor(Math.random() * 200) + 1)
+          } //URLs are cashed
+          style={linkStyle}
+        >
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <IconButton color="primary" aria-label="add to shopping cart">
+              <CasinoIcon />
+            </IconButton>
           </Box>
         </Link>
       </Box>

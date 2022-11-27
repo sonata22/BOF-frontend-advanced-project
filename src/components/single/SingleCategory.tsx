@@ -1,4 +1,4 @@
-import { Avatar, Box, Button } from "@mui/material";
+import { Avatar, Box, Button, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -24,28 +24,16 @@ const SingleCategory = () => {
   return (
     <Box
       display="flex"
-      flexDirection="column"
+      flexDirection="row"
       justifyContent="center"
       alignItems="center"
-      position="fixed"
+      gap={1}
+      padding={1.5}
     >
-      <h1>{category.name}</h1>
-      <Avatar
-        alt={category.name}
-        src={category.image}
-        sx={{ width: 200, height: 200 }}
-      />
-      <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        lineHeight={0}
-        margin={1}
-      >
-        <h3>Category ID</h3>
-        <p>{category.id}</p>
-      </Box>
+      <Avatar alt={category.name} src={category.image} />
+      <Typography gutterBottom variant="h6" component="div">
+        {category.name}
+      </Typography>
       <EditCategoryModal />
     </Box>
   );
