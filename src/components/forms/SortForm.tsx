@@ -23,29 +23,31 @@ const SortForm = () => {
   };
 
   return (
-    <Box>
-      <h3>Sort by:</h3>
+    <Box display="flex" alignItems="center" gap={0.5} marginRight={4.5}>
       <Button
         startIcon={<UnfoldMore />}
-        variant="outlined"
+        variant="text"
         onClick={sortByPrice}
         color="primary"
+        size="small"
       >
-        Price
+        $
       </Button>
       <Button
-        variant="outlined"
+        variant="text"
         onClick={sortByTitleAsc}
         color="primary"
+        size="small"
       >
-        Title Asc
+        A-Z
       </Button>
       <Button
-        variant="outlined"
+        variant="text"
         onClick={sortByTitleDesc}
         color="primary"
+        size="small"
       >
-        Title Desc
+        Z-A
       </Button>
     </Box>
   );

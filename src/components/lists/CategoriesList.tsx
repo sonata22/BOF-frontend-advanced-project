@@ -1,4 +1,11 @@
-import { Avatar, Box, Divider, LinearProgress, List, ListItem } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Divider,
+  LinearProgress,
+  List,
+  ListItem,
+} from "@mui/material";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -53,7 +60,7 @@ const CategoriesList = () => {
                   margin={1}
                 >
                   <Link to={`/categories/${item.id}`}>{item.name}</Link>
-                  ID: {item.id}{" "}
+                  ID: {item.id}
                 </Box>
               </Box>
             </List>

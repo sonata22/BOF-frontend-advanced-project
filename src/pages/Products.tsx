@@ -22,18 +22,15 @@ const Products = () => {
       <Box>
         <Grid container spacing={0}>
           <Grid item xs={1.5}>
-            {/** Placeholder */}
+            {/* NavBar Placeholder */}
           </Grid>
-          <Grid item xs={8.5}>
+          <Grid item xs={10.5}>
             <ProductsList />
-          </Grid>
-          <Grid item xs={2}>
-            <SortForm />
           </Grid>
         </Grid>
       </Box>
     </div>
   );
-};;
+};
 
 export default Products;

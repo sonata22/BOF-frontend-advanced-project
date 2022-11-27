@@ -54,7 +54,7 @@ const Login = () => {
                         </h2>
                       </Box>
                       <Divider variant="middle" />
-                      <Box display="flex" justifyContent="space-evenly" gap={1}>
+                      <Box display="flex" justifyContent="space-evenly" >
                         <CreateUserViaAdminForm />
                         <AddCategory />
                         <AddProduct />
