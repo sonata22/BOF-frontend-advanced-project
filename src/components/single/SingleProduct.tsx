@@ -1,4 +1,4 @@
-import { Box, Divider, IconButton, ListItem } from "@mui/material";
+import { Avatar, Box, Divider, IconButton, ListItem } from "@mui/material";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -10,6 +10,7 @@ import DeleteProduct from "../buttons/DeleteProduct";
 import { authenticate } from "../../redux/reducers/users";
 import EditProductModal from "../modals/EditProductModal";
 import ToCart from "../buttons/ToCart";
+import SingleCategory from "./SingleCategory";
 
 const SingleProduct = () => {
   const user = useAppSelector((state) => state.userReducer.currentUser); //read userReducer state value
@@ -42,11 +43,22 @@ const SingleProduct = () => {
         bgcolor="white"
         sx={{ zIndex: 5 }}
       >
+        <Box
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          gap={1}
+        >
+          <Avatar alt={product.category?.name} src={product.category?.image} />
+          <h2>
+            <i>{product.category?.name + " /"}</i>
+          </h2>
+        </Box>
         <h2>
-          <ListItem>
-            <InsertDriveFileIcon color="primary" />
-            {product.title} <i>${product.price}</i>
-          </ListItem>
+          <i>
+            {"/ " + product.title} ${product.price}
+          </i>
         </h2>
       </Box>
       <Divider variant="fullWidth" />
@@ -76,17 +88,15 @@ const SingleProduct = () => {
       >
         {user?.role === "admin" && (
           <Box display="flex">
-            <ToCart/>
+            <ToCart />
             <AddToFavourite />
             <EditProductModal />
             <DeleteProduct />
           </Box>
         )}
         {user?.role === "customer" && (
-          <Box>
-            <IconButton color="primary">
-              <AddShoppingCartIcon />
-            </IconButton>
+          <Box display="flex">
+            <ToCart />
             <AddToFavourite />
           </Box>
         )}

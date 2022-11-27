@@ -19,10 +19,9 @@ const Featured = () => {
         <Grid item xs={1.5}>
           {/**<NavBar /> */}
         </Grid>
-        <Grid item xs={8.5}>
+        <Grid item xs={10.5}>
           <FavouriteList />
         </Grid>
-        <Grid item xs={2}></Grid>
       </Grid>
     </Box>
   );

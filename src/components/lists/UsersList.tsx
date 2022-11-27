@@ -1,12 +1,17 @@
 import {
   Avatar,
   Box,
+  Card,
+  CardContent,
+  CardHeader,
   Divider,
   LinearProgress,
+  Link,
   List,
   ListItem,
   ListItemAvatar,
   ListItemText,
+  Typography,
 } from "@mui/material";
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -39,39 +44,31 @@ const Users = () => {
         sx={{ zIndex: 5 }}
       >
         <h2>
-          <ListItem>
-            <PersonIcon color="primary" />
-            Users List
-          </ListItem>
+          <i>Users List</i>
         </h2>
       </Box>
       <Divider variant="middle" />
-      <ul>
+      <Box display="flex" flexWrap="wrap" gap={1} justifyContent="center">
         {users.map((item) => (
           <List key={item.id}>
-            <ListItem alignItems="center">
-              <ListItemAvatar>
-                <Avatar
-                  alt={item.name}
-                  src={item.avatar}
-                  sx={{ width: 100, height: 100, m: "0em 0.7em" }}
+            <Box>
+              <Card sx={{ maxWidth: 345 }}>
+                <CardHeader
+                  avatar={
+                    <Avatar
+                      alt={item.name}
+                      src={item.avatar}
+                      sx={{ width: 150, height: 150 }}
+                    />
+                  }
+                  title={item.name + " | " + item.role}
+                  subheader={item.email + " password: " + item.password}
                 />
-              </ListItemAvatar>
-              <ListItemText
-                primary={item.name}
-                secondary={
-                  <React.Fragment>
-                    {item.email}
-                    <br />
-                    {item.role}
-                  </React.Fragment>
-                }
-              />
-            </ListItem>
-            <Divider variant="inset" component="li" />
+              </Card>
+            </Box>
           </List>
         ))}
-      </ul>
+      </Box>
     </div>
   );
 };

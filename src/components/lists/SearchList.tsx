@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Box, Divider, List, ListItem, TextField } from "@mui/material";
+import { Avatar, Box, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, IconButton, List, ListItem, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchAllProducts } from "../../redux/reducers/products";
+import ReadMoreIcon from "@mui/icons-material/ReadMore";
+
 
 const SearchList = () => {
   const dispatch = useAppDispatch();
@@ -50,23 +52,46 @@ const SearchList = () => {
           flexDirection="row"
           flexWrap="wrap"
           justifyContent="center"
+          gap={1}
         >
           {tempList.map((item) => (
             <List key={item.id}>
-              <Box
-                width={210}
-                display="flex"
-                flexDirection="column"
-                alignItems="center"
-              >
-                {item.images && (
-                  <img src={item.images[0]} alt={item.title} width="205px" />
-                )}
-                <Link to={`../products/${item.id}`}>
-                  <b>{item.title}</b>
-                </Link>
-                <i>${item.price}</i>
-                {item.description}
+              <Box display="flex" flexDirection="column" alignItems="center">
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardHeader
+                    avatar={
+                      <Avatar alt={item.title} src={item.category?.image} />
+                    }
+                    title={item.title}
+                    subheader={item.category?.name}
+                  />
+                  <CardMedia
+                    component="img"
+                    height="194"
+                    image={item.images[0]}
+                    alt={item.title}
+                  />
+                  <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                      {item.description}
+                    </Typography>
+                  </CardContent>
+                  <Box
+                    display="flex"
+                    flexDirection="row-reverse"
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <CardActions>
+                      <Link to={`../products/${item.id}`}>
+                        <IconButton color="primary">
+                          <ReadMoreIcon />
+                        </IconButton>
+                      </Link>
+                    </CardActions>
+                    <Box paddingLeft={1.5}>${item.price}</Box>
+                  </Box>
+                </Card>
               </Box>
             </List>
           ))}

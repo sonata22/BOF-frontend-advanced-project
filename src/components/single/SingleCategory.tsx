@@ -9,17 +9,17 @@ import EditCategoryModal from "../modals/EditCategoryModal";
 const SingleCategory = () => {
   const params = useParams();
   const categoryId = Number(params.categoryId);
-  const category = useAppSelector(
-    (state) => state.categoryReducer.singleCategory
-  );
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (categoryId) {
       dispatch(fetchSingleCategory(categoryId));
     }
   }, [dispatch, categoryId]);
+  const category = useAppSelector(
+    (state) => state.categoryReducer.singleCategory
+  );
   if (!category) {
-    return <h1>Loading</h1>;
+    return <h3>Loading</h3>;
   }
   return (
     <Box

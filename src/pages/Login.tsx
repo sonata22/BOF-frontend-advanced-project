@@ -66,14 +66,11 @@ const Login = () => {
                         sx={{ zIndex: 5 }}
                       >
                         <h2>
-                          <ListItem>
-                            <OfflineBoltIcon color="primary" />
-                            Admin Panel
-                          </ListItem>
+                          <i>Admin Panel</i>
                         </h2>
                       </Box>
                       <Divider variant="middle" />
-                      <Box display="flex" justifyContent="space-evenly">
+                      <Box display="flex" justifyContent="center">
                         <CreateUserViaAdminForm />
                         <AddCategory />
                         <AddProduct />
@@ -82,7 +79,6 @@ const Login = () => {
                   )}
                 </div>
               )}
-              {/**MODIFY IT PROPERLY  */}
               <div>
                 {user?.role === "admin" && (
                   <div>

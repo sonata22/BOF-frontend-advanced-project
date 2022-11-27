@@ -51,7 +51,6 @@ const CartList = () => {
 
   return (
     <div>
-      <header>
         <Box
           display="flex"
           flexDirection="row"
@@ -77,7 +76,6 @@ const CartList = () => {
           </Box>
         </Box>
         <Divider variant="middle" />
-      </header>
       {cartList.length > 0 ? (
         <Box
           display="flex"

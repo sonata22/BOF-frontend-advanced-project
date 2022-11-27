@@ -19,10 +19,9 @@ const Search = () => {
         <Grid item xs={1.5}>
           {/** Placeholder */}
         </Grid>
-        <Grid item xs={8.5}>
+        <Grid item xs={10.5}>
           <SearchList />
         </Grid>
-        <Grid item xs={2}></Grid>
       </Grid>
     </Box>
   );

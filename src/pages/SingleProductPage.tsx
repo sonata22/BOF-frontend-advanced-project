@@ -20,14 +20,13 @@ const SingleProductPage = () => {
     <div>
       <Box>
         <Grid container spacing={0}>
-          <Grid item xs={1.5}>
+          <Grid item xs={2.5}>
             {/**<NavBar /> */}
           </Grid>
-          <Grid item xs={8.5}>
+          <Grid item xs={7.5}>
             <SingleProduct />
           </Grid>
           <Grid item xs={2}>
-            <ProductCategory />
           </Grid>
         </Grid>
       </Box>
