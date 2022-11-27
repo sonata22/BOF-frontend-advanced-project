@@ -26,7 +26,7 @@ const SortForm = () => {
     <Box display="flex" alignItems="center" gap={0.5} marginRight={4.5}>
       <Button
         startIcon={<UnfoldMore />}
-        variant="text"
+        variant="outlined"
         onClick={sortByPrice}
         color="primary"
         size="small"
@@ -34,7 +34,7 @@ const SortForm = () => {
         $
       </Button>
       <Button
-        variant="text"
+        variant="outlined"
         onClick={sortByTitleAsc}
         color="primary"
         size="small"
@@ -42,7 +42,7 @@ const SortForm = () => {
         A-Z
       </Button>
       <Button
-        variant="text"
+        variant="outlined"
         onClick={sortByTitleDesc}
         color="primary"
         size="small"

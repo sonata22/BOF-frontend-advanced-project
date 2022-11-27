@@ -1,8 +1,7 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import {
   Avatar,
   Box,
+  Button,
   Card,
   CardActions,
   CardContent,
@@ -10,45 +9,53 @@ import {
   CardMedia,
   Divider,
   IconButton,
-  LinearProgress,
   List,
-  ListItem,
   Typography,
 } from "@mui/material";
-import CategoryIcon from "@mui/icons-material/Category";
-
+import React from "react";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { fetchAllProducts } from "../../redux/reducers/products";
+import { removeFromCart } from "../../redux/reducers/cart";
+import CancelIcon from "@mui/icons-material/Cancel";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
-import { red } from "@mui/material/colors";
-import { ExpandMore } from "@mui/icons-material";
-import SortForm from "../forms/SortForm";
 
-const ProductsList = () => {
-  const products = useAppSelector((state) => state.productReducer.products);
+const CartList = () => {
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchAllProducts());
-  }, [dispatch]);
+  const cartList = useAppSelector((state) => state.cartReducer);
+  console.log("call from fav list", cartList);
+  const product = useAppSelector((state) => state.productReducer.singleProduct);
+  const onDelete = (id: number) => {
+    dispatch(removeFromCart(id));
+  };
   return (
     <div>
-      <Box
-        display="flex"
-        flexDirection="row"
-        paddingLeft={5}
-        position="sticky"
-        justifyContent="space-between"
-        top={0}
-        bgcolor="white"
-        sx={{ zIndex: 5 }}
-      >
-        <h2>
-          <i>All Products</i>
-        </h2>
-        <SortForm />
-      </Box>
-      <Divider variant="middle" />
-      {products.length > 0 ? (
+      <header>
+        <Box
+          display="flex"
+          flexDirection="row"
+          paddingLeft={5}
+          position="sticky"
+          justifyContent="space-between"
+          top={0}
+          bgcolor="white"
+          sx={{ zIndex: 5 }}
+        >
+          <h2>
+            <i>Cart</i>
+          </h2>
+          <Box display="flex" alignItems="center" gap={0.5} marginRight={4.5}>
+            <p>Total: $999</p>
+            <Button
+              variant="contained"
+              disabled={cartList.length === 0 ? true : false}
+            >
+              Purchase
+            </Button>
+          </Box>
+        </Box>
+        <Divider variant="middle" />
+      </header>
+      {cartList.length > 0 ? (
         <Box
           display="flex"
           flexDirection="row"
@@ -56,7 +63,7 @@ const ProductsList = () => {
           justifyContent="center"
           gap={1}
         >
-          {products.map((item) => (
+          {cartList.map((item) => (
             <List key={item.id}>
               <Box display="flex" flexDirection="column" alignItems="center">
                 <Card sx={{ maxWidth: 345 }}>
@@ -85,13 +92,19 @@ const ProductsList = () => {
                     justifyContent="space-between"
                   >
                     <CardActions>
-                      <Link to={JSON.stringify(item.id)}>
+                      <Link to={`../products/${item.id}`}>
                         <IconButton color="primary">
                           <ReadMoreIcon />
                         </IconButton>
                       </Link>
+                      <IconButton
+                        onClick={() => onDelete(item.id!)}
+                        sx={{ position: "relative" }}
+                      >
+                        <CancelIcon />
+                      </IconButton>
                     </CardActions>
-                    <Box paddingLeft={1.5} >${item.price}</Box>
+                    <Box paddingLeft={1.5}>${item.price}</Box>
                   </Box>
                 </Card>
               </Box>
@@ -99,10 +112,10 @@ const ProductsList = () => {
           ))}
         </Box>
       ) : (
-        <LinearProgress />
+        <i>Cart is empty. Add any product to cart and return back here.</i>
       )}
     </div>
   );
 };
 
-export default ProductsList;
+export default CartList;

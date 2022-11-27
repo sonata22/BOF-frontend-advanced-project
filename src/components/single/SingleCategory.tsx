@@ -28,12 +28,11 @@ const SingleCategory = () => {
       justifyContent="center"
       alignItems="center"
       gap={1}
-      padding={1.5}
     >
       <Avatar alt={category.name} src={category.image} />
-      <Typography gutterBottom variant="h6" component="div">
-        {category.name}
-      </Typography>
+      <h2>
+        <i>{category.name}</i>
+      </h2>
       <EditCategoryModal />
     </Box>
   );

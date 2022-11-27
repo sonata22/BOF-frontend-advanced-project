@@ -6,6 +6,7 @@ export interface Product {
   category?: ProductCategory;
   images: string[];
   categoryId?: number;
+  amount?: number;
 }
 
 export interface ProductReducer {
