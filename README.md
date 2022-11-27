@@ -32,7 +32,7 @@ Want to implement additionally:
         - users
         - products
         - categories
-    -+ Favourites Page (needs to be modified)
+    + Favourites Page
     - Button tooltips (e.g. when it is disabled to inform user about smth)
     + Sign Up
     - Show/Hide password icon logic

@@ -12,21 +12,43 @@ import {
   List,
   Typography,
 } from "@mui/material";
-import React from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { removeFromCart } from "../../redux/reducers/cart";
-import CancelIcon from "@mui/icons-material/Cancel";
+import {
+  decreaseAmount,
+  emptyCart,
+  increaseAmount,
+  removeFromCart,
+} from "../../redux/reducers/cart";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { Product } from "../../types/Product";
 
 const CartList = () => {
   const dispatch = useAppDispatch();
   const cartList = useAppSelector((state) => state.cartReducer);
   console.log("call from fav list", cartList);
-  const product = useAppSelector((state) => state.productReducer.singleProduct);
   const onDelete = (id: number) => {
     dispatch(removeFromCart(id));
   };
+  const onIncrease = (item: Product) => {
+    dispatch(increaseAmount(item));
+  };
+  const onDecrease = (item: Product) => {
+    dispatch(decreaseAmount(item));
+  };
+  const onPurchase = () => {
+    dispatch(emptyCart());
+    alert("Thanks for purchase! Check your mail box to see the recipt.");
+  };
+
+  let sum = 0;
+  cartList.forEach((element) => {
+    sum += element.amount! * element.price;
+  });
+
   return (
     <div>
       <header>
@@ -44,10 +66,11 @@ const CartList = () => {
             <i>Cart</i>
           </h2>
           <Box display="flex" alignItems="center" gap={0.5} marginRight={4.5}>
-            <p>Total: $999</p>
+            <p>${sum}</p>
             <Button
               variant="contained"
               disabled={cartList.length === 0 ? true : false}
+              onClick={onPurchase}
             >
               Purchase
             </Button>
@@ -70,6 +93,11 @@ const CartList = () => {
                   <CardHeader
                     avatar={
                       <Avatar alt={item.title} src={item.category?.image} />
+                    }
+                    action={
+                      <IconButton onClick={() => onDelete(item.id!)}>
+                        <DeleteIcon />
+                      </IconButton>
                     }
                     title={item.title}
                     subheader={item.category?.name}
@@ -97,14 +125,24 @@ const CartList = () => {
                           <ReadMoreIcon />
                         </IconButton>
                       </Link>
-                      <IconButton
-                        onClick={() => onDelete(item.id!)}
-                        sx={{ position: "relative" }}
-                      >
-                        <CancelIcon />
-                      </IconButton>
                     </CardActions>
-                    <Box paddingLeft={1.5}>${item.price}</Box>
+                    <Box>
+                      <IconButton
+                        color="primary"
+                        disabled={item.amount === 1 ? true : false}
+                        onClick={() => onDecrease(item)}
+                      >
+                        <RemoveIcon />
+                      </IconButton>
+                      {item.amount}
+                      <IconButton
+                        color="primary"
+                        onClick={() => onIncrease(item)}
+                      >
+                        <AddIcon />
+                      </IconButton>
+                    </Box>
+                    <Box paddingLeft={1.5}>${item.price * item.amount!}</Box>
                   </Box>
                 </Card>
               </Box>
@@ -112,7 +150,12 @@ const CartList = () => {
           ))}
         </Box>
       ) : (
-        <i>Cart is empty. Add any product to cart and return back here.</i>
+        <Box
+          display="flex"
+          justifyContent="center"
+        >
+          <i>Cart is empty. Add any product to cart and return back here.</i>
+        </Box>
       )}
     </div>
   );

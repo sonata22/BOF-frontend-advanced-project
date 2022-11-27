@@ -74,7 +74,7 @@ const ProductsByCategory = () => {
                     justifyContent="space-between"
                   >
                     <CardActions>
-                      <Link to={JSON.stringify(item.id)}>
+                      <Link to={`../../products/${item.id}`}>
                         <IconButton color="primary">
                           <ReadMoreIcon />
                         </IconButton>

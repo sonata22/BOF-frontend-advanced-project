@@ -10,11 +10,13 @@ if (process.env.NODE_ENV !== "production" && module.hot) {
 const favourite: Product[] = JSON.parse(
   localStorage.getItem("favourite") || "[]"
 );
+const cart: Product[] = JSON.parse(localStorage.getItem("cart") || "[]");
 
 export const store = configureStore({
   reducer: rootReducer,
   preloadedState: {
     favouriteReducer: favourite,
+    cartReducer: cart,
   },
 });
 
@@ -22,6 +24,12 @@ store.subscribe(() => {
   localStorage.setItem(
     "favourite",
     JSON.stringify(store.getState().favouriteReducer)
+  );
+});
+store.subscribe(() => {
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(store.getState().cartReducer)
   );
 });
 
