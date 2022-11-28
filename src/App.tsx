@@ -64,9 +64,9 @@ const theme = createTheme({
             color="primary"
           >
             {theme.palette.mode === "light" ? (
-              <Brightness7Icon />
-            ) : (
               <Brightness4Icon />
+            ) : (
+              <Brightness7Icon />
             )}
           </IconButton>
         <Provider store={store}>

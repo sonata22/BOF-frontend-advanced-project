@@ -25,7 +25,7 @@ const Login = () => {
   }, [dispatch, token]); //-------------------------------------
 
   return (
-    <div>
+    <Box>
       <Provider store={store}>
         <Box>
           <Grid container spacing={0}>
@@ -83,6 +83,20 @@ const Login = () => {
                       </Box>
                     </Box>
                   )}
+                  {user.role === "customer" && (
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="center"
+                      style={{ minHeight: "90vh" }}
+                      bgcolor="background.default"
+                    >
+                      <Typography variant="body1" color="text.secondary">
+                        This is your profile page
+                      </Typography>
+                    </Box>
+                  )}
                 </div>
               )}
               <div>
@@ -99,7 +113,7 @@ const Login = () => {
           </Grid>
         </Box>
       </Provider>
-    </div>
+    </Box>
   );
 };
 
