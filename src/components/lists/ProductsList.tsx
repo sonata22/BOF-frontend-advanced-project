@@ -39,12 +39,18 @@ const ProductsList = () => {
         position="sticky"
         justifyContent="space-between"
         top={0}
-        bgcolor="white"
+        bgcolor="background.default"
         sx={{ zIndex: 5 }}
       >
-        <h2>
-          <i>All Products</i>
-        </h2>
+        <Typography
+          color="primary"
+          variant="button"
+          padding={2}
+          fontSize={18}
+          fontWeight={550}
+        >
+          All Products
+        </Typography>
         <SortForm />
       </Box>
       <Divider variant="middle" />
@@ -91,7 +97,7 @@ const ProductsList = () => {
                         </IconButton>
                       </Link>
                     </CardActions>
-                    <Box paddingLeft={1.5} >${item.price}</Box>
+                    <Box paddingLeft={1.5}>${item.price}</Box>
                   </Box>
                 </Card>
               </Box>

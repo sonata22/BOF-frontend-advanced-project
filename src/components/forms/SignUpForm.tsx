@@ -1,4 +1,4 @@
-import { Box, Button, MenuItem, TextField } from "@mui/material";
+import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -44,7 +44,15 @@ const SignUpForm = () => {
           "& .MuiTextField-root": { width: "25ch" },
         }}
       >
-        <h2>Sign Up</h2>
+        <Typography
+          color="primary"
+          variant="button"
+          padding={2}
+          fontSize={22}
+          fontWeight={550}
+        >
+          Sign Up
+        </Typography>
         <TextField
           required
           id="username"

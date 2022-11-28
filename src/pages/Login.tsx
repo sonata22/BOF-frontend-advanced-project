@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, ListItem } from "@mui/material";
+import { Box, Divider, Grid, ListItem, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
 import LoginForm from "../components/forms/LoginForm";
@@ -62,12 +62,18 @@ const Login = () => {
                         paddingLeft={5}
                         position="sticky"
                         top={0}
-                        bgcolor="white"
+                        bgcolor="background.default"
                         sx={{ zIndex: 5 }}
                       >
-                        <h2>
-                          <i>Admin Panel</i>
-                        </h2>
+                        <Typography
+                          color="primary"
+                          variant="button"
+                          padding={2}
+                          fontSize={18}
+                          fontWeight={550}
+                        >
+                          Admin Panel
+                        </Typography>
                       </Box>
                       <Divider variant="middle" />
                       <Box display="flex" justifyContent="center">

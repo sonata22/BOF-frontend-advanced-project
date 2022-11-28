@@ -1,4 +1,11 @@
-import { Avatar, Box, Divider, IconButton, ListItem } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Divider,
+  IconButton,
+  ListItem,
+  Typography,
+} from "@mui/material";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -37,10 +44,10 @@ const SingleProduct = () => {
       <Box
         display="flex"
         flexDirection="row"
-        paddingLeft={1}
+        paddingLeft={0}
         position="sticky"
         top={0}
-        bgcolor="white"
+        bgcolor="background.default"
         sx={{ zIndex: 5 }}
       >
         <Box
@@ -48,18 +55,28 @@ const SingleProduct = () => {
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
-          gap={1}
+          gap={0}
         >
           <Avatar alt={product.category?.name} src={product.category?.image} />
-          <h2>
-            <i>{product.category?.name + " /"}</i>
-          </h2>
+          <Typography
+            color="primary"
+            variant="button"
+            padding={2}
+            fontSize={18}
+            fontWeight={550}
+          >
+            {product.category?.name + ":"}
+          </Typography>
         </Box>
-        <h2>
-          <i>
-            {"/ " + product.title} ${product.price}
-          </i>
-        </h2>
+        <Typography
+          color="primary"
+          variant="button"
+          padding={2}
+          fontSize={18}
+          fontWeight={550}
+        >
+          {product.title} ${product.price}
+        </Typography>
       </Box>
       <Divider variant="fullWidth" />
       {product.images && (
@@ -101,9 +118,15 @@ const SingleProduct = () => {
           </Box>
         )}
       </Box>
-      <h3>Description</h3>
-      <p>{product.description}</p>
-      <i>Product ID: {product.id}</i>
+      <Typography variant="body2" color="text.primary" fontWeight={550} fontSize={15} >
+        Description:
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        {product.description}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        Product ID: {product.id}
+      </Typography>
     </div>
   );
 };

@@ -51,31 +51,45 @@ const CartList = () => {
 
   return (
     <div>
-        <Box
-          display="flex"
-          flexDirection="row"
-          paddingLeft={5}
-          position="sticky"
-          justifyContent="space-between"
-          top={0}
-          bgcolor="white"
-          sx={{ zIndex: 5 }}
+      <Box
+        display="flex"
+        flexDirection="row"
+        paddingLeft={5}
+        position="sticky"
+        justifyContent="space-between"
+        top={0}
+        bgcolor="background.default"
+        sx={{ zIndex: 5 }}
+      >
+        <Typography
+          color="primary"
+          variant="button"
+          padding={2}
+          fontSize={18}
+          fontWeight={550}
         >
-          <h2>
-            <i>Cart</i>
-          </h2>
-          <Box display="flex" alignItems="center" gap={0.5} marginRight={4.5}>
-            <p>${sum}</p>
-            <Button
-              variant="contained"
-              disabled={cartList.length === 0 ? true : false}
-              onClick={onPurchase}
-            >
-              Purchase
-            </Button>
-          </Box>
+          Cart
+        </Typography>
+        <Box display="flex" alignItems="center" gap={0.5} marginRight={4.5}>
+          <Typography
+            color="text.secondary"
+            variant="button"
+            padding={2}
+            fontSize={15}
+            fontWeight={550}
+          >
+            ${sum}
+          </Typography>
+          <Button
+            variant="contained"
+            disabled={cartList.length === 0 ? true : false}
+            onClick={onPurchase}
+          >
+            Purchase
+          </Button>
         </Box>
-        <Divider variant="middle" />
+      </Box>
+      <Divider variant="middle" />
       {cartList.length > 0 ? (
         <Box
           display="flex"
@@ -148,10 +162,7 @@ const CartList = () => {
           ))}
         </Box>
       ) : (
-        <Box
-          display="flex"
-          justifyContent="center"
-        >
+        <Box display="flex" justifyContent="center">
           <i>Cart is empty. Add any product to cart and return back here.</i>
         </Box>
       )}

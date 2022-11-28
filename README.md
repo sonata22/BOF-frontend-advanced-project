@@ -3,11 +3,11 @@
 ## Requirement
 
 1. Endpoint: [https://fakeapi.platzi.com/](https://fakeapi.platzi.com/)
-2. Pages AT LEAST: +Home, +Product, +Profile, -Cart
+2. Pages AT LEAST: +Home, +Product, +Profile, +Cart
     + Profile - only available if user logins
-    - Cart - can be a page or a modal
+    + Cart - can be a page or a modal
 3. Button - to switch themes of the web app
-    - Theme switch
+    + Theme switch
 4. Store Reducer:
     + get all products
     + get a single product
@@ -17,17 +17,16 @@
     + update and delete a product (enable update & delete features only for admin of the webapp)
    User Reducer:
     + get all users
-    - get a single user (feature no longer supported by API)
     + create new user (delete user is not allowed in this api)
     + authenticate user
    Cart Reducer:
-    - add product to cart
-    - remove products from cart
-    - update products's quantity in cart
+    + add product to cart
+    + remove products from cart
+    + update products's quantity in cart
 5. + When adding routers to your application, programatically set certain routes to be private. For example, route to user profile page should not be accessible if user has not logged in.
 
 Want to implement additionally:
-    - SingleRandomProduct
+    + SingleRandomProduct
     - Statistics for:
         - users
         - products
@@ -37,8 +36,7 @@ Want to implement additionally:
     + Sign Up
     - Show/Hide password icon logic
     + Show/Hide button for password in profile or just remove it
-    - Music Player
-    - Products on sale??
+    - Products on sale
     - Image slides or carousels
     - Commenting a product functionality
     - Rating?
@@ -46,9 +44,9 @@ Want to implement additionally:
     - Order button in Cart with hint "Gotcha!" and maybe purchase functionality... that's a long way ahead
     - Validation
     + Only admin can create admin accounts
-    - Edit category from single page
+    + Edit category from single page
     - Green circle on Profile page when user is logged in
-    - Pagination?
+    - Pagination
 
 
 

@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useAppDispatch } from "../../redux/hooks";
@@ -37,7 +37,15 @@ const LoginForm = () => {
         gap={1.5}
         height={550}
       >
-        <h1>Log In</h1>
+        <Typography
+          color="primary"
+          variant="button"
+          padding={2}
+          fontSize={22}
+          fontWeight={550}
+        >
+          Log In 
+        </Typography>
         <TextField
           required
           id="email"

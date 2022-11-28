@@ -1,4 +1,4 @@
-import { Box, Button, Card, TextField } from "@mui/material";
+import { Box, Button, Card, TextField, Typography } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useAppDispatch } from "../../redux/hooks";
@@ -42,7 +42,15 @@ const AddProductForm = () => {
             "& .MuiTextField-root": { width: "25ch" },
           }}
         >
-          <h2>Add Product</h2>
+          <Typography
+            color="text.secondary"
+            variant="button"
+            padding={2}
+            fontSize={18}
+            fontWeight={550}
+          >
+            Add Product
+          </Typography>
           <TextField
             required
             id="title"

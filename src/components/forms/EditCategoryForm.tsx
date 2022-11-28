@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import SaveIcon from "@mui/icons-material/Save";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -37,7 +37,15 @@ const EditCategoryForm = () => {
       gap={1}
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h2>Update Category</h2>
+      <Typography
+        color="primary"
+        variant="button"
+        padding={2}
+        fontSize={18}
+        fontWeight={550}
+      >
+        Update Category
+      </Typography>
       <TextField
         required
         id="name"

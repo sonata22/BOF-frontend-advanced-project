@@ -1,4 +1,4 @@
-import { Avatar, Box, Button } from "@mui/material";
+import { Avatar, Box, Button, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { logOut } from "../redux/reducers/users";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -20,7 +20,14 @@ const Profile = () => {
           position="fixed"
           margin={1}
         >
-          <h1>Profile</h1>
+          <Typography
+            color="text.secondary"
+            variant="h5"
+            padding={2}
+            fontWeight={550}
+          >
+            Profile
+          </Typography>
           <Avatar
             alt={user.name}
             src={user.avatar}
@@ -34,14 +41,39 @@ const Profile = () => {
             lineHeight={0}
             margin={1}
           >
-            <h3>User Name</h3>
-            <p>{user.name}</p>
-            <h3>Email</h3>
-            <p>{user.email}</p>
-            {/**<h3>Password</h3>
-            {user.role === "admin" ? <p>{user.password}</p> : <p>*******</p>} */}
-            <h3>Role</h3>
-            <p>{user.role}</p>
+            <Typography
+              color="text.secondary"
+              variant="h6"
+              padding={2}
+              fontWeight={550}
+            >
+              User Name
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {user.name}
+            </Typography>
+            <Typography
+              color="text.secondary"
+              variant="h6"
+              padding={2}
+              fontWeight={550}
+            >
+              Email
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {user.email}
+            </Typography>
+            <Typography
+              color="text.secondary"
+              variant="h6"
+              padding={2}
+              fontWeight={550}
+            >
+              Role
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {user.role}
+            </Typography>
           </Box>
           <Button
             type="button"

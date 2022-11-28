@@ -2,7 +2,7 @@ import React from 'react'
 
 const SingleUserPage = () => {
   return (
-    <div>SingleUserPage</div>
+    <div>Nothing here so far :D And probobly won't be...</div>
   )
 }
 

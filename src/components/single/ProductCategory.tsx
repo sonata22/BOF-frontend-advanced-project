@@ -1,4 +1,4 @@
-import { Avatar, Box } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -26,7 +26,15 @@ const ProductCategory = () => {
         alignItems="center"
         margin={1}
       >
-        <h1>{product.category?.name}</h1>
+        <Typography
+          color="primary"
+          variant="button"
+          padding={2}
+          fontSize={18}
+          fontWeight={550}
+        >
+          {product.category?.name}
+        </Typography>
         <Avatar
           alt={product.category?.name}
           src={product.category?.image}

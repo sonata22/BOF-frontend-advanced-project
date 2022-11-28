@@ -35,7 +35,7 @@ const ProductsByCategory = () => {
         paddingLeft={5}
         position="sticky"
         top={0}
-        bgcolor="white"
+        bgcolor="background.default"
         sx={{ zIndex: 5 }}
       >
         <SingleCategory />

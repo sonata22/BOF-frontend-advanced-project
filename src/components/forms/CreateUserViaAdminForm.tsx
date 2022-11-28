@@ -1,4 +1,4 @@
-import { Box, Button, Card, MenuItem, TextField } from "@mui/material";
+import { Box, Button, Card, MenuItem, TextField, Typography } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch } from "../../redux/hooks";
 import { addUser } from "../../redux/reducers/users";
@@ -27,7 +27,15 @@ const CreateUserViaAdminForm = () => {
           }}
           onSubmit={handleSubmit(onSubmit)}
         >
-          <h2>Register User</h2>
+          <Typography
+            color="text.secondary"
+            variant="button"
+            padding={2}
+            fontSize={18}
+            fontWeight={550}
+          >
+            Register User
+          </Typography>
           <TextField
             required
             id="username"

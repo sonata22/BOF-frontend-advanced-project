@@ -10,6 +10,7 @@ import {
   LinearProgress,
   List,
   ListItem,
+  Typography,
 } from "@mui/material";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -35,12 +36,18 @@ const CategoriesList = () => {
         position="sticky"
         justifyContent="space-between"
         top={0}
-        bgcolor="white"
+        bgcolor="background.default"
         sx={{ zIndex: 5 }}
       >
-        <h2>
-          <i>Categories</i>
-        </h2>
+        <Typography
+          color="primary"
+          variant="button"
+          padding={2}
+          fontSize={18}
+          fontWeight={550}
+        >
+          Categories
+        </Typography>
       </Box>
       <Divider variant="middle" />
       {categories.length > 0 ? (

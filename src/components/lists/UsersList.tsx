@@ -27,7 +27,15 @@ const Users = () => {
   if (users.length === 0) {
     return (
       <div>
-        <h1>Products List</h1>
+        <Typography
+          color="primary"
+          variant="button"
+          padding={2}
+          fontSize={18}
+          fontWeight={550}
+        >
+          Users List
+        </Typography>
         <LinearProgress />
       </div>
     );
@@ -40,12 +48,18 @@ const Users = () => {
         paddingLeft={5}
         position="sticky"
         top={0}
-        bgcolor="white"
+        bgcolor="background.default"
         sx={{ zIndex: 5 }}
       >
-        <h2>
-          <i>Users List</i>
-        </h2>
+        <Typography
+          color="primary"
+          variant="button"
+          padding={2}
+          fontSize={18}
+          fontWeight={550}
+        >
+          Users List
+        </Typography>
       </Box>
       <Divider variant="middle" />
       <Box display="flex" flexWrap="wrap" gap={1} justifyContent="center">

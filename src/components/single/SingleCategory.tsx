@@ -27,12 +27,18 @@ const SingleCategory = () => {
       flexDirection="row"
       justifyContent="center"
       alignItems="center"
-      gap={1}
+      gap={0}
     >
       <Avatar alt={category.name} src={category.image} />
-      <h2>
-        <i>{category.name}</i>
-      </h2>
+      <Typography
+        color="primary"
+        variant="button"
+        padding={2}
+        fontSize={18}
+        fontWeight={550}
+      >
+        {category.name}
+      </Typography>
       <EditCategoryModal />
     </Box>
   );

@@ -28,7 +28,12 @@ const NavBar = () => {
       margin={1}
       height="90%"
     >
-      <Box display="flex" flexDirection="row" justifyContent="center">
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        sx={{ bgcolor: "background.default" }}
+      >
         <ReturnButton />
         <ForwardButton />
       </Box>
@@ -93,18 +98,23 @@ const NavBar = () => {
             </Button>
           </Box>
         </Link>
-        <Link
-          to={
-            "/products/" + JSON.stringify(Math.floor(Math.random() * 200) + 1)
-          } //URLs are cashed
-          style={linkStyle}
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="center"
         >
-          <Box display="flex" flexDirection="column" alignItems="center">
+          <Link
+            to={
+              "/products/" + JSON.stringify(Math.floor(Math.random() * 200) + 1)
+            } //URLs are cashed
+            style={linkStyle}
+          >
             <IconButton color="primary" aria-label="add to shopping cart">
               <CasinoIcon />
             </IconButton>
-          </Box>
-        </Link>
+          </Link>
+        </Box>
       </Box>
     </Box>
   );

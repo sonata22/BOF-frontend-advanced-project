@@ -35,12 +35,18 @@ const FavouriteList = () => {
         paddingLeft={5}
         position="sticky"
         top={0}
-        bgcolor="white"
+        bgcolor="background.default"
         sx={{ zIndex: 5 }}
       >
-        <h2>
-          <i>Featured</i>
-        </h2>
+        <Typography
+          color="primary"
+          variant="button"
+          padding={2}
+          fontSize={18}
+          fontWeight={550}
+        >
+          Featured
+        </Typography>
       </Box>
       <Divider variant="fullWidth" />
       {favourites.length > 0 ? (
